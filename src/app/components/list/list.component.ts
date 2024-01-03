@@ -1,13 +1,12 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { CardComponent } from '../card/card.component';
 
 @Component({
   selector: 'app-list',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, CardComponent],
   templateUrl: './list.component.html',
-  styleUrl: './list.component.scss'
+  styleUrl: './list.component.scss',
 })
-export class ListComponent {
-
-}
+export class ListComponent {}

@@ -1,13 +1,43 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Project, ProjectService } from '../../services/projects.service';
+import { List, ListsService } from '../../services/lists.service';
+import { FormsModule } from '@angular/forms';
+import { ListComponent } from '../list/list.component';
 
 @Component({
   selector: 'app-projects',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule, ListComponent],
   templateUrl: './projects.component.html',
-  styleUrl: './projects.component.scss'
+  styleUrl: './projects.component.scss',
 })
-export class ProjectsComponent {
+export class ProjectsComponent implements OnInit {
+  projects!: Project[];
+  actualProject!: Project;
+  lists!: List[];
+  @Input()
+  nomProjet!: string;
 
+  constructor(
+    public threadsService: ProjectService,
+    public listsService: ListsService
+  ) {}
+
+  ngOnInit() {
+    this.projects = [
+      {
+        id: 1,
+        nom: 'Projet Alpha',
+        description: 'Le premier projet concerne...',
+        dateCreation: new Date(2024, 0, 1, 9, 30, 25),
+      },
+      {
+        id: 2,
+        nom: 'Projet Beta',
+        description: 'Le second projet traite de...',
+        dateCreation: new Date(2024, 1, 15, 14, 45, 10),
+      },
+    ];
+  }
 }

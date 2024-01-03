@@ -1,1 +1,27 @@
-<p>projects works!</p>
+<div class="top-container">
+  <div class="side-barre">
+    <div class="titles">
+      <h1 class="site-title">Mini-<span>Trello</span></h1>
+      <h2 class="channel-title">CHANNELS</h2>
+    </div>
+    <div class="channels" *ngFor="let project of projects">
+      <div class="buttonContainer">
+        <button class="buttonDelete">X</button>
+        <button class="thread">
+          {{ project.nom }}
+        </button>
+      </div>
+    </div>
+    <div class="add-thread">
+      <input
+        type="text"
+        [(ngModel)]="this.nomProjet"
+        maxlength="30"
+        placeholder="Nouveau channel"
+        autocomplete="off"
+      />
+      <button>Nouveau Project</button>
+    </div>
+  </div>
+  <div class="messageList"></div>
+</div>
