@@ -25,7 +25,7 @@ export class CardService {
     return this.http.get<Card[]>(`${this.apiUrl}/carte`);
   }
 
-  getCardById(id: string): Observable<Card> {
+  getCardById(id: number): Observable<Card> {
     return this.http.get<Card>(`${this.apiUrl}/carte/${id}`);
   }
 
@@ -37,7 +37,7 @@ export class CardService {
     return this.http.put(`${this.apiUrl}/carte/${card.id}`, card);
   }
 
-  deleteCard(id: string) {
+  deleteCard(id: number) {
     return this.http.delete(`${this.apiUrl}/carte/${id}`);
   }
 }

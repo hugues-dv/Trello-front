@@ -24,7 +24,7 @@ export class ProjectService {
     return this.http.get<Project[]>(`${this.apiUrl}/projet`);
   }
 
-  getProjectById(id: string): Observable<Project> {
+  getProjectById(id: number): Observable<Project> {
     return this.http.get<Project>(`${this.apiUrl}/projet/${id}`);
   }
 
@@ -36,7 +36,7 @@ export class ProjectService {
     return this.http.put(`${this.apiUrl}/projet/${project.id}`, project);
   }
 
-  deleteProject(id: string) {
+  deleteProject(id: number) {
     return this.http.delete(`${this.apiUrl}/projet/${id}`);
   }
 }

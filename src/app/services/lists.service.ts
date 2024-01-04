@@ -23,8 +23,12 @@ export class ListService {
     return this.http.get<List[]>(`${this.apiUrl}/liste`);
   }
 
-  getListById(id: string): Observable<List> {
+  getListById(id: number): Observable<List> {
     return this.http.get<List>(`${this.apiUrl}/liste/${id}`);
+  }
+
+  getListByProjectId(projectId: number): Observable<List> {
+    return this.http.get<List>(`${this.apiUrl}/liste/projectId=${projectId}`);
   }
 
   createList(list: List) {
@@ -35,7 +39,7 @@ export class ListService {
     return this.http.put(`${this.apiUrl}/liste/${list.id}`, list);
   }
 
-  deleteList(id: string) {
+  deleteList(id: number) {
     return this.http.delete(`${this.apiUrl}/liste/${id}`);
   }
 }
