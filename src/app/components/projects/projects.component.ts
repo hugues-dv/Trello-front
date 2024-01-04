@@ -57,7 +57,7 @@ export class ProjectsComponent implements OnInit {
     }
   }
 
-  deleteProject(projectId: string) {
+  deleteProject(projectId: number) {
     this.projectsService.deleteProject(projectId).subscribe(() => {
       this.projects = this.projects.filter(
         (project) => project.id != Number(projectId)

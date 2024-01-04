@@ -36,7 +36,7 @@ export class ProjectService {
     return this.http.put(`${this.apiUrl}/projet/${project.id}`, project);
   }
 
-  deleteProject(id: string) {
+  deleteProject(id: number) {
     return this.http.delete(`${this.apiUrl}/projet/${id}`);
   }
 }

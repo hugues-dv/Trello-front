@@ -37,7 +37,7 @@ export class CardService {
     return this.http.put(`${this.apiUrl}/carte/${card.id}`, card);
   }
 
-  deleteCard(id: string) {
+  deleteCard(id: number) {
     return this.http.delete(`${this.apiUrl}/carte/${id}`);
   }
 }

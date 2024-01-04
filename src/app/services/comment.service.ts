@@ -37,7 +37,7 @@ export class CommentService {
     return this.http.put(`${this.apiUrl}/commentaire/${comment.id}`, comment);
   }
 
-  deleteComment(id: string) {
+  deleteComment(id: number) {
     return this.http.delete(`${this.apiUrl}/commentaire/${id}`);
   }
 }
