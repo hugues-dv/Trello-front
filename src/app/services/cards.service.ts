@@ -25,7 +25,7 @@ export class CardService {
     return this.http.get<Card[]>(`${this.apiUrl}/carte`);
   }
 
-  getCardById(id: string): Observable<Card> {
+  getCardById(id: number): Observable<Card> {
     return this.http.get<Card>(`${this.apiUrl}/carte/${id}`);
   }
 

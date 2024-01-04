@@ -23,7 +23,7 @@ export class ListService {
     return this.http.get<List[]>(`${this.apiUrl}/liste`);
   }
 
-  getListById(id: string): Observable<List> {
+  getListById(id: number): Observable<List> {
     return this.http.get<List>(`${this.apiUrl}/liste/${id}`);
   }
 

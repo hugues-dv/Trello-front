@@ -25,7 +25,7 @@ export class CommentService {
     return this.http.get<Comment[]>(`${this.apiUrl}/commentaire`);
   }
 
-  getCommentById(id: string): Observable<Comment> {
+  getCommentById(id: number): Observable<Comment> {
     return this.http.get<Comment>(`${this.apiUrl}/commentaire/${id}`);
   }
 
