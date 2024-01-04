@@ -18,4 +18,8 @@ export class ProjectService {
   constructor(private http: HttpClient, private configService: ConfigService) {
     this.apiUrl = configService.getApiUrl();
   }
+
+  getProjects() {
+    return this.http.get(`${this.apiUrl}/projet`);
+  }
 }

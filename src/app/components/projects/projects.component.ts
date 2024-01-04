@@ -62,4 +62,12 @@ export class ProjectsComponent implements OnInit {
       },
     ];
   }
+
+  test() {
+    console.log('coucou');
+    let test: any = this.threadsService
+      .getProjects()
+      .subscribe((val) => console.log(val));
+    console.log(test);
+  }
 }
