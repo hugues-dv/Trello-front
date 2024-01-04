@@ -39,5 +39,27 @@ export class ProjectsComponent implements OnInit {
         dateCreation: new Date(2024, 1, 15, 14, 45, 10),
       },
     ];
+    this.lists = [
+      {
+        id: 1,
+        nom: 'Liste A',
+        idProject: 1,
+      },
+      {
+        id: 2,
+        nom: 'Liste B',
+        idProject: 1,
+      },
+      {
+        id: 3,
+        nom: 'Liste C',
+        idProject: 1,
+      },
+      {
+        id: 4,
+        nom: 'Liste D',
+        idProject: 1,
+      },
+    ];
   }
 }
