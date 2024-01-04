@@ -32,7 +32,7 @@ export class ProjectsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.projectsService.getProjects().subscribe((projects: any) => {
+    this.projectsService.getProjects().subscribe((projects: Project[]) => {
       this.projects = projects;
       this.selectProject(this.projects[0]);
     });
@@ -78,13 +78,5 @@ export class ProjectsComponent implements OnInit {
       return Number(lastProject.id); // Renvoie l'ID du dernier projet
     }
     return undefined; // S'il n'y a pas de projet, renvoie undefined
-  }
-
-  test() {
-    console.log('coucou');
-    let test: any = this.projectsService
-      .getProjects()
-      .subscribe((val) => console.log(val));
-    console.log(test);
   }
 }
