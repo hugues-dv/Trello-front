@@ -6,21 +6,30 @@
     </div>
     <div class="channels" *ngFor="let project of projects">
       <div class="buttonContainer">
-        <button class="buttonDelete">X</button>
+        <button class="buttonDelete" (click)="deleteProject(project.id)">
+          X
+        </button>
         <button class="thread">
-          {{ project.nom }}
+          {{ project.nom }} {{ project.description }}
         </button>
       </div>
     </div>
     <div class="add-thread">
       <input
         type="text"
-        [(ngModel)]="this.nomProjet"
+        [(ngModel)]="this.projectLabel"
         maxlength="30"
-        placeholder="Nouveau channel"
+        placeholder="Nouveau Projet"
         autocomplete="off"
       />
-      <button (click)="test()">Nouveau Project</button>
+      <input
+        type="text"
+        [(ngModel)]="this.projectDescription"
+        maxlength="30"
+        placeholder="Description projet"
+        autocomplete="off"
+      />
+      <button (click)="sendProject()">Nouveau Project</button>
     </div>
   </div>
   <div class="listsContainer">
