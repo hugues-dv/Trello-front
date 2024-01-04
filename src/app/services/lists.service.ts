@@ -11,13 +11,11 @@ export interface List {
 @Injectable({
   providedIn: 'root',
 })
-export class ListsService {
-  lists: List[] | undefined = [];
+export class ListService {
   private apiUrl: string;
 
   constructor(private http: HttpClient, private configService: ConfigService) {
     this.apiUrl = configService.getApiUrl();
-    this.lists = [];
   }
 
   getLists() {

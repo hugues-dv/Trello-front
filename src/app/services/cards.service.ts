@@ -13,12 +13,30 @@ export interface Card {
 @Injectable({
   providedIn: 'root',
 })
-export class CardsService {
-  cards: Card[] | undefined = [];
+export class CardService {
   private apiUrl: string;
 
   constructor(private http: HttpClient, private configService: ConfigService) {
     this.apiUrl = configService.getApiUrl();
-    this.cards = [];
+  }
+
+  getCards() {
+    return this.http.get(`${this.apiUrl}/carte`);
+  }
+
+  getCardById(id: string) {
+    return this.http.get(`${this.apiUrl}/carte/${id}`);
+  }
+
+  createCard(card: Card) {
+    return this.http.post(`${this.apiUrl}/carte`, card);
+  }
+
+  updateCard(card: Card) {
+    return this.http.put(`${this.apiUrl}/carte/${card.id}`, card);
+  }
+
+  deleteCard(id: string) {
+    return this.http.delete(`${this.apiUrl}/carte/${id}`);
   }
 }

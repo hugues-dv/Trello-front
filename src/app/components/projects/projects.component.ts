@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Project, ProjectService } from '../../services/projects.service';
-import { List, ListsService } from '../../services/lists.service';
+import { List, ListService } from '../../services/lists.service';
 import { FormsModule } from '@angular/forms';
 import { ListComponent } from '../list/list.component';
 
@@ -21,7 +21,7 @@ export class ProjectsComponent implements OnInit {
 
   constructor(
     public threadsService: ProjectService,
-    public listsService: ListsService
+    public listsService: ListService
   ) {}
 
   ngOnInit() {
