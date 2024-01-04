@@ -18,6 +18,7 @@ export class ProjectsComponent implements OnInit {
   actualProject!: Project;
   lists!: List[];
   @Input()
+  listNom!: string;
   projectLabel!: string;
   projectDescription!: string;
 
@@ -29,6 +30,9 @@ export class ProjectsComponent implements OnInit {
 
   selectProject(project: Project) {
     this.actualProject = project;
+    this.listsService.getListByProjectId(project.id).subscribe((lists: any) => {
+      this.lists = lists;
+    });
   }
 
   ngOnInit() {
@@ -37,7 +41,13 @@ export class ProjectsComponent implements OnInit {
       this.selectProject(this.projects[0]);
     });
   }
+  // sendList(){
+  //   if(this.listNom.trim() !== ""){
+  //     this.listsService.createList({
 
+  //     })
+  //   }
+  // }
   sendProject() {
     if (this.projectLabel.trim() !== '') {
       let lastProjectId = this.getLastProjectId();

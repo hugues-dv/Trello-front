@@ -160,13 +160,13 @@ button {
   // overflow-y: scroll;
 }
 
-.list {
+app-list {
   flex-direction: column;
   background-color: lightgray;
   flex: 1;
   padding: 5px;
 }
 
-.list:not(:last-child) {
+app-list:not(:last-child) {
   margin-right: 10px;
 }
