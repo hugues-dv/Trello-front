@@ -172,10 +172,46 @@ button {
 }
 
 .card {
-  height: 200px;
-  background-color: gray;
+  display: block;
+  height: 100px;
+
+  background-color:#5e2880;
 }
 
 .card:not(:last-child) {
   margin-bottom: 5px;
 }
+
+.card1 {
+  display: block;
+  height: 100px;
+
+  background-color:#5e2880;
+}
+
+.card1:not(:last-child) {
+  margin-bottom: 5px;
+}
+
+.card2 {
+  display: block;
+  height: 100px;
+
+  background-color:#5e2880;
+}
+
+.card2:not(:last-child) {
+  margin-bottom: 5px;
+}
+
+.card3 {
+  display: block;
+  height: 100px;
+
+  background-color:#5e2880;
+}
+
+.card3:not(:last-child) {
+  margin-bottom: 5px;
+}
+

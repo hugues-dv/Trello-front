@@ -4,11 +4,12 @@ import { Project, ProjectService } from '../../services/projects.service';
 import { List, ListService } from '../../services/lists.service';
 import { FormsModule } from '@angular/forms';
 import { ListComponent } from '../list/list.component';
+import { CardComponent } from '../card/card.component';
 
 @Component({
   selector: 'app-projects',
   standalone: true,
-  imports: [CommonModule, FormsModule, ListComponent],
+  imports: [CommonModule, FormsModule, ListComponent, CardComponent],
   templateUrl: './projects.component.html',
   styleUrl: './projects.component.scss',
 })
