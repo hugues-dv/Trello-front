@@ -19,4 +19,24 @@ export class ListsService {
     this.apiUrl = configService.getApiUrl();
     this.lists = [];
   }
+
+  getLists() {
+    return this.http.get(`${this.apiUrl}/liste`);
+  }
+
+  getListById(id: string) {
+    return this.http.get(`${this.apiUrl}/liste/${id}`);
+  }
+
+  createList(list: List) {
+    return this.http.post(`${this.apiUrl}/liste`, list);
+  }
+
+  updateList(list: List) {
+    return this.http.put(`${this.apiUrl}/liste/${list.id}`, list);
+  }
+
+  deleteList(id: string) {
+    return this.http.delete(`${this.apiUrl}/liste/${id}`);
+  }
 }

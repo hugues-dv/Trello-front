@@ -22,4 +22,20 @@ export class ProjectService {
   getProjects() {
     return this.http.get(`${this.apiUrl}/projet`);
   }
+
+  getProjectById(id: string) {
+    return this.http.get(`${this.apiUrl}/projet/${id}`);
+  }
+
+  createProject(project: Project) {
+    return this.http.post(`${this.apiUrl}/projet`, project);
+  }
+
+  updateProject(project: Project) {
+    return this.http.put(`${this.apiUrl}/projet/${project.id}`, project);
+  }
+
+  deleteProject(id: string) {
+    return this.http.delete(`${this.apiUrl}/projet/${id}`);
+  }
 }
