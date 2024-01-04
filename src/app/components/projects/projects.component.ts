@@ -41,13 +41,23 @@ export class ProjectsComponent implements OnInit {
       this.selectProject(this.projects[0]);
     });
   }
-  // sendList(){
-  //   if(this.listNom.trim() !== ""){
-  //     this.listsService.createList({
 
-  //     })
-  //   }
-  // }
+  sendList() {
+    if (this.listNom.trim() !== '') {
+      let lastListId = this.getLastListId();
+      let newListId = lastListId ? lastListId + 1 : 1;
+      this.listsService
+        .createList({
+          id: newListId,
+          nom: this.listNom,
+          idProject: this.actualProject.id,
+        })
+        .subscribe((list: any) => {
+          this.lists.push(list);
+          this.listNom = '';
+        });
+    }
+  }
   sendProject() {
     if (this.projectLabel.trim() !== '') {
       let lastProjectId = this.getLastProjectId();
@@ -82,6 +92,15 @@ export class ProjectsComponent implements OnInit {
       }
     });
   }
+
+  getLastListId(): number | undefined {
+    if (this.lists.length > 0) {
+      const lastList = this.lists[this.lists.length - 1];
+      return Number(lastList.id);
+    }
+    return undefined;
+  }
+
   getLastProjectId(): number | undefined {
     if (this.projects.length > 0) {
       const lastProject = this.projects[this.projects.length - 1]; // Récupère le dernier projet
