@@ -1,11 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Project, ProjectService } from '../../services/projects.service';
-import { List, ListsService } from '../../services/lists.service';
+import { List, ListService } from '../../services/lists.service';
 import { FormsModule } from '@angular/forms';
 import { ListComponent } from '../list/list.component';
-import { CardsService } from '../../services/cards.service';
-import { threadId } from 'worker_threads';
+import { CardService } from '../../services/cards.service';
 
 @Component({
   selector: 'app-projects',
@@ -24,8 +23,8 @@ export class ProjectsComponent implements OnInit {
 
   constructor(
     public projectsService: ProjectService,
-    public listsService: ListsService,
-    public cardsService: CardsService
+    public listsService: ListService,
+    public cardsService: CardService
   ) {}
 
   selectProject(project: Project) {
@@ -58,12 +57,12 @@ export class ProjectsComponent implements OnInit {
     }
   }
 
-  deleteProject(projectId: any) {
+  deleteProject(projectId: string) {
     this.projectsService.deleteProject(projectId).subscribe(() => {
       this.projects = this.projects.filter(
-        (project) => project.id != projectId
+        (project) => project.id != Number(projectId)
       );
-      if (this.actualProject && this.actualProject.id == projectId) {
+      if (this.actualProject && this.actualProject.id == Number(projectId)) {
         this.actualProject = {
           id: this.projects[0].id,
           nom: this.projects[0].nom,

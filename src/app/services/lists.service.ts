@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ConfigService } from './config.service';
+import { Observable } from 'rxjs';
 
 export interface List {
   id: number;
@@ -11,21 +12,19 @@ export interface List {
 @Injectable({
   providedIn: 'root',
 })
-export class ListsService {
-  lists: List[] | undefined = [];
+export class ListService {
   private apiUrl: string;
 
   constructor(private http: HttpClient, private configService: ConfigService) {
     this.apiUrl = configService.getApiUrl();
-    this.lists = [];
   }
 
-  getLists() {
-    return this.http.get(`${this.apiUrl}/liste`);
+  getLists(): Observable<List[]> {
+    return this.http.get<List[]>(`${this.apiUrl}/liste`);
   }
 
-  getListById(id: string) {
-    return this.http.get(`${this.apiUrl}/liste/${id}`);
+  getListById(id: string): Observable<List> {
+    return this.http.get<List>(`${this.apiUrl}/liste/${id}`);
   }
 
   createList(list: List) {
