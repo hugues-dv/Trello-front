@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ConfigService } from './config.service';
+import { Observable } from 'rxjs';
 
 export interface Comment {
   id: number;
@@ -20,12 +21,12 @@ export class CommentService {
     this.apiUrl = configService.getApiUrl();
   }
 
-  getComments() {
-    return this.http.get(`${this.apiUrl}/commentaire`);
+  getComments(): Observable<Comment[]> {
+    return this.http.get<Comment[]>(`${this.apiUrl}/commentaire`);
   }
 
-  getCommentById(id: string) {
-    return this.http.get(`${this.apiUrl}/commentaire/${id}`);
+  getCommentById(id: string): Observable<Comment> {
+    return this.http.get<Comment>(`${this.apiUrl}/commentaire/${id}`);
   }
 
   createComment(comment: Comment) {

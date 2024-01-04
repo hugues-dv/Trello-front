@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ConfigService } from './config.service';
+import { Observable } from 'rxjs';
 
 export interface Project {
   id: number;
@@ -19,12 +20,12 @@ export class ProjectService {
     this.apiUrl = configService.getApiUrl();
   }
 
-  getProjects() {
-    return this.http.get(`${this.apiUrl}/projet`);
+  getProjects(): Observable<Project[]> {
+    return this.http.get<Project[]>(`${this.apiUrl}/projet`);
   }
 
-  getProjectById(id: string) {
-    return this.http.get(`${this.apiUrl}/projet/${id}`);
+  getProjectById(id: string): Observable<Project> {
+    return this.http.get<Project>(`${this.apiUrl}/projet/${id}`);
   }
 
   createProject(project: Project) {

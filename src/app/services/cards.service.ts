@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ConfigService } from './config.service';
+import { Observable } from 'rxjs';
 
 export interface Card {
   id: number;
@@ -20,12 +21,12 @@ export class CardService {
     this.apiUrl = configService.getApiUrl();
   }
 
-  getCards() {
-    return this.http.get(`${this.apiUrl}/carte`);
+  getCards(): Observable<Card[]> {
+    return this.http.get<Card[]>(`${this.apiUrl}/carte`);
   }
 
-  getCardById(id: string) {
-    return this.http.get(`${this.apiUrl}/carte/${id}`);
+  getCardById(id: string): Observable<Card> {
+    return this.http.get<Card>(`${this.apiUrl}/carte/${id}`);
   }
 
   createCard(card: Card) {

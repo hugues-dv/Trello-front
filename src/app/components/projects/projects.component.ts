@@ -65,9 +65,14 @@ export class ProjectsComponent implements OnInit {
 
   test() {
     console.log('coucou');
-    let test: any = this.threadsService
-      .getProjects()
-      .subscribe((val) => console.log(val));
-    console.log(test);
+    this.threadsService.getProjects().subscribe((datas) => {
+      this.projects = datas.map((projet: any) => ({
+        id: projet.id,
+        nom: projet.nom,
+        description: projet.description,
+        dateCreation: projet.dateCreation,
+      }));
+      console.log(this.projects);
+    });
   }
 }
