@@ -45,10 +45,8 @@ export class ProjectsComponent implements OnInit {
 
   addList() {
     console.log(this.actualProject);
-    // let newListId = this.getLastListId() + 1;
     this.listsService
       .createList({
-        // id: newListId,
         name: 'Add name',
         idProject: Number(this.actualProject.id),
       })
@@ -63,11 +61,8 @@ export class ProjectsComponent implements OnInit {
       this.projectLabel.trim() !== '' &&
       this.projectDescription.trim() !== ''
     ) {
-      // let lastProjectId = this.getLastProjectId();
-      // let newProjectId = lastProjectId ? lastProjectId + 1 : 1;
       this.projectsService
         .createProject({
-          // id: newProjectId,
           name: this.projectLabel,
           description: this.projectDescription,
           createdAt: new Date(),
@@ -95,20 +90,4 @@ export class ProjectsComponent implements OnInit {
       }
     });
   }
-
-  // getLastListId(): number {
-  //   if (this.lists.length > 0) {
-  //     const lastList = this.lists[this.lists.length - 1];
-  //     return Number(lastList.id);
-  //   }
-  //   return 0;
-  // }
-
-  // getLastProjectId(): number | undefined {
-  //   if (this.projects.length > 0) {
-  //     const lastProject = this.projects[this.projects.length - 1]; // Récupère le dernier projet
-  //     return Number(lastProject.id); // Renvoie l'ID du dernier projet
-  //   }
-  //   return undefined; // S'il n'y a pas de projet, renvoie undefined
-  // }
 }
