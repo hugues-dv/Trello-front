@@ -160,58 +160,22 @@ button {
   // overflow-y: scroll;
 }
 
-.list {
+app-list {
   flex-direction: column;
   background-color: lightgray;
   flex: 1;
   padding: 5px;
 }
 
-.list:not(:last-child) {
+app-list:not(:last-child) {
   margin-right: 10px;
 }
 
 .card {
-  display: block;
-  height: 100px;
-
-  background-color:#5e2880;
+  height: 200px;
+  background-color: gray;
 }
 
 .card:not(:last-child) {
   margin-bottom: 5px;
 }
-
-.card1 {
-  display: block;
-  height: 100px;
-
-  background-color:#5e2880;
-}
-
-.card1:not(:last-child) {
-  margin-bottom: 5px;
-}
-
-.card2 {
-  display: block;
-  height: 100px;
-
-  background-color:#5e2880;
-}
-
-.card2:not(:last-child) {
-  margin-bottom: 5px;
-}
-
-.card3 {
-  display: block;
-  height: 100px;
-
-  background-color:#5e2880;
-}
-
-.card3:not(:last-child) {
-  margin-bottom: 5px;
-}
-
