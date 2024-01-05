@@ -16,6 +16,7 @@ export class ProjectsComponent implements OnInit {
   projects!: Project[];
   actualProject!: Project;
   lists!: List[];
+  projectsDatas!: Object;
   @Input()
   nomProjet!: string;
 
@@ -64,10 +65,10 @@ export class ProjectsComponent implements OnInit {
   }
 
   test() {
-    console.log('coucou');
-    let test: any = this.threadsService
-      .getProjects()
-      .subscribe((val) => console.log(val));
-    console.log(test);
+    console.log(this.projectsDatas);
+
+    const val = this.threadsService.getProjects().subscribe((val) => {
+      this.projectsDatas = val;
+    });
   }
 }
