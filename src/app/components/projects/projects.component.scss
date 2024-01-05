@@ -156,17 +156,14 @@ button {
   width: 100%;
   background-color: white;
   color: black;
-  padding: 30px;
+  padding: 10px;
 }
 
 .header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-}
-
-.board h2 {
-  padding-bottom: 20px;
+  padding: 20px;
 }
 
 .add-list-button {
@@ -205,4 +202,6 @@ app-list:not(:last-child) {
 
 .description {
   color: gray;
+  padding-left: 20px;
+  padding-bottom: 20px;
 }
