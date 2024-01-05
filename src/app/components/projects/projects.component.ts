@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Project, ProjectService } from '../../services/projects.service';
-import { List, ListsService } from '../../services/lists.service';
+import { List, ListService } from '../../services/lists.service';
 import { FormsModule } from '@angular/forms';
 import { ListComponent } from '../list/list.component';
 
@@ -18,57 +18,87 @@ export class ProjectsComponent implements OnInit {
   lists!: List[];
   projectsDatas!: Object;
   @Input()
-  nomProjet!: string;
+  listName!: string;
+  projectLabel!: string;
+  projectDescription!: string;
 
   constructor(
-    public threadsService: ProjectService,
-    public listsService: ListsService
+    public projectsService: ProjectService,
+    public listsService: ListService
   ) {}
 
   ngOnInit() {
-    this.projects = [
-      {
-        id: 1,
-        nom: 'Projet Alpha',
-        description: 'Le premier projet concerne...',
-        dateCreation: new Date(2024, 0, 1, 9, 30, 25),
-      },
-      {
-        id: 2,
-        nom: 'Projet Beta',
-        description: 'Le second projet traite de...',
-        dateCreation: new Date(2024, 1, 15, 14, 45, 10),
-      },
-    ];
-    this.lists = [
-      {
-        id: 1,
-        nom: 'Liste A',
-        idProject: 1,
-      },
-      {
-        id: 2,
-        nom: 'Liste B',
-        idProject: 1,
-      },
-      {
-        id: 3,
-        nom: 'Liste C',
-        idProject: 1,
-      },
-      {
-        id: 4,
-        nom: 'Liste D',
-        idProject: 1,
-      },
-    ];
+    this.projectsService.getProjects().subscribe((projects: Project[]) => {
+      this.projects = projects;
+      if (this.projects[0]) {
+        this.selectProject(this.projects[0]);
+      }
+    });
   }
 
-  test() {
-    console.log(this.projectsDatas);
-
-    const val = this.threadsService.getProjects().subscribe((val) => {
-      this.projectsDatas = val;
+  selectProject(project: Project) {
+    this.actualProject = project;
+    this.listsService.getListByProjectId(project.id).subscribe((lists: any) => {
+      this.lists = lists;
     });
+  }
+
+  addList() {
+    this.listsService
+      .createList({
+        name: 'Add name',
+        idProject: this.actualProject.id,
+      })
+      .subscribe((list: any) => {
+        this.lists.push(list);
+        this.listName = '';
+      });
+  }
+
+  sendProject() {
+    if (
+      this.projectLabel.trim() !== '' &&
+      this.projectDescription.trim() !== ''
+    ) {
+      let lastProjectId = this.getLastProjectId();
+      let newProjectId = lastProjectId ? lastProjectId + 1 : 1;
+      this.projectsService
+        .createProject({
+          id: newProjectId,
+          name: this.projectLabel,
+          description: this.projectDescription,
+          createdAt: new Date(),
+        })
+        .subscribe((project: any) => {
+          this.projects.push(project);
+          this.projectLabel = '';
+          this.projectDescription = '';
+          this.selectProject(project);
+        });
+    }
+  }
+
+  deleteProject(projectId: number) {
+    this.projectsService.deleteProject(projectId).subscribe(() => {
+      this.projects = this.projects.filter(
+        (project) => project.id != Number(projectId)
+      );
+      if (this.actualProject && this.actualProject.id == Number(projectId)) {
+        // this.actualProject = {
+        //   id: this.projects[0].id,
+        //   name: this.projects[0].name,
+        //   description: this.projects[0].description,
+        //   createdAt: this.projects[0].createdAt,
+        // };
+      }
+    });
+  }
+
+  getLastProjectId(): number | undefined {
+    if (this.projects.length > 0) {
+      const lastProject = this.projects[this.projects.length - 1]; // Récupère le dernier projet
+      return Number(lastProject.id); // Renvoie l'ID du dernier projet
+    }
+    return undefined; // S'il n'y a pas de projet, renvoie undefined
   }
 }

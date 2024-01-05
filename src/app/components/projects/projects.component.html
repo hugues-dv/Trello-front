@@ -6,36 +6,44 @@
     </div>
     <div class="channels" *ngFor="let project of projects">
       <div class="buttonContainer">
-        <button class="buttonDelete">X</button>
-        <button class="thread">
-          {{ project.nom }}
+        <button class="buttonDelete" (click)="deleteProject(project.id)">
+          X
+        </button>
+        <button class="project" (click)="selectProject(project)">
+          {{ project.name }}
         </button>
       </div>
     </div>
-    <div class="add-thread">
+    <div class="add-project">
       <input
         type="text"
-        [(ngModel)]="this.nomProjet"
+        [(ngModel)]="this.projectLabel"
         maxlength="30"
-        placeholder="Nouveau channel"
+        placeholder="Nouveau Projet"
         autocomplete="off"
       />
-      <button (click)="test()">Nouveau Project</button>
+      <input
+        type="text"
+        [(ngModel)]="this.projectDescription"
+        maxlength="30"
+        placeholder="Description projet"
+        autocomplete="off"
+      />
+      <button (click)="sendProject()">Nouveau Project</button>
     </div>
   </div>
-  <div class="listsContainer">
-    <div class="list">A Faire
-      <div class="card"></div>
-      <div class="card"></div>
-      <div class="card"></div>
-      <div class="card"></div>
-      <div class="card"></div>
-      <div class="card"></div>
+  <div class="board">
+    <div class="header">
+      <h2>Board</h2>
+      <div class="add-list-button" (click)="addList()">
+        Add list <i class="fa fa-plus-square-o" aria-hidden="true"></i>
+      </div>
     </div>
-
-  <div class="list">En Cours</div>
-  <div class="list">Terminé</div>
-  <div class="list">Stand-by</div>
-
+    <div class="description" *ngIf="projects">
+      Description: {{ actualProject.description }}
+    </div>
+    <div class="listsContainer">
+      <app-list class="list" *ngFor="let list of lists"></app-list>
+    </div>
   </div>
 </div>

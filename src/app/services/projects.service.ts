@@ -1,12 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ConfigService } from './config.service';
+import { Observable } from 'rxjs';
 
 export interface Project {
   id: number;
-  nom: string;
+  name: string;
   description: string;
-  dateCreation: Date;
+  createdAt: Date;
 }
 
 @Injectable({
@@ -19,7 +20,23 @@ export class ProjectService {
     this.apiUrl = configService.getApiUrl();
   }
 
-  getProjects() {
-    return this.http.get(`${this.apiUrl}/projet`);
+  getProjects(): Observable<Project[]> {
+    return this.http.get<Project[]>(`${this.apiUrl}/project`);
+  }
+
+  getProjectById(id: number): Observable<Project> {
+    return this.http.get<Project>(`${this.apiUrl}/project/${id}`);
+  }
+
+  createProject(project: Project) {
+    return this.http.post(`${this.apiUrl}/project`, project);
+  }
+
+  updateProject(project: Project) {
+    return this.http.put(`${this.apiUrl}/project/${project.id}`, project);
+  }
+
+  deleteProject(id: number) {
+    return this.http.delete(`${this.apiUrl}/project/${id}`);
   }
 }
