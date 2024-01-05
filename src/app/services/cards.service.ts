@@ -22,22 +22,22 @@ export class CardService {
   }
 
   getCards(): Observable<Card[]> {
-    return this.http.get<Card[]>(`${this.apiUrl}/carte`);
+    return this.http.get<Card[]>(`${this.apiUrl}/card`);
   }
 
   getCardById(id: number): Observable<Card> {
-    return this.http.get<Card>(`${this.apiUrl}/carte/${id}`);
+    return this.http.get<Card>(`${this.apiUrl}/card/${id}`);
   }
 
   createCard(card: Card) {
-    return this.http.post(`${this.apiUrl}/carte`, card);
+    return this.http.post(`${this.apiUrl}/card`, card);
   }
 
   updateCard(card: Card) {
-    return this.http.put(`${this.apiUrl}/carte/${card.id}`, card);
+    return this.http.put(`${this.apiUrl}/card/${card.id}`, card);
   }
 
   deleteCard(id: number) {
-    return this.http.delete(`${this.apiUrl}/carte/${id}`);
+    return this.http.delete(`${this.apiUrl}/card/${id}`);
   }
 }
