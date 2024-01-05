@@ -10,7 +10,7 @@
           X
         </button>
         <button class="project" (click)="selectProject(project)">
-          {{ project.name }} {{ project.description }}
+          {{ project.name }}
         </button>
       </div>
     </div>
@@ -38,6 +38,9 @@
       <div class="add-list-button" (click)="addList()">
         Add list <i class="fa fa-plus-square-o" aria-hidden="true"></i>
       </div>
+    </div>
+    <div class="description" *ngIf="actualProject.description">
+      Description: {{ actualProject.description }}
     </div>
     <div class="listsContainer">
       <app-list class="list" *ngFor="let list of lists"></app-list>

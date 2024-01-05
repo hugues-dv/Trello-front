@@ -4,7 +4,7 @@ import { ConfigService } from './config.service';
 import { Observable } from 'rxjs';
 
 export interface Card {
-  id?: number;
+  id: number;
   title: string;
   description: string;
   createdAt: Date;

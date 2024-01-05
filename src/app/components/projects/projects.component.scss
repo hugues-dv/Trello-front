@@ -202,3 +202,7 @@ app-list {
 app-list:not(:last-child) {
   margin-right: 10px;
 }
+
+.description {
+  color: gray;
+}

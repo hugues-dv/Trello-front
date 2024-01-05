@@ -4,7 +4,6 @@ import { Project, ProjectService } from '../../services/projects.service';
 import { List, ListService } from '../../services/lists.service';
 import { FormsModule } from '@angular/forms';
 import { ListComponent } from '../list/list.component';
-import { CardService } from '../../services/cards.service';
 
 @Component({
   selector: 'app-projects',
@@ -44,7 +43,6 @@ export class ProjectsComponent implements OnInit {
   }
 
   addList() {
-    console.log(this.actualProject);
     this.listsService
       .createList({
         name: 'Add name',
@@ -74,6 +72,7 @@ export class ProjectsComponent implements OnInit {
           this.projects.push(project);
           this.projectLabel = '';
           this.projectDescription = '';
+          this.selectProject(project);
         });
     }
   }
