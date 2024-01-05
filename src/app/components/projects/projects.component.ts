@@ -32,7 +32,6 @@ export class ProjectsComponent implements OnInit {
     this.actualProject = project;
     this.listsService.getListByProjectId(project.id).subscribe((lists: any) => {
       this.lists = lists;
-      console.log(lists);
     });
   }
 

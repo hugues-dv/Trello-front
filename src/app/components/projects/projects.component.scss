@@ -90,6 +90,7 @@ button.thread {
   cursor: pointer;
 }
 
+.add-list-button:hover,
 .buttonDelete:hover,
 .thread:hover,
 .add-thread button:not(:disabled):hover {
@@ -149,15 +150,40 @@ button {
   color: white;
 }
 
-.listsContainer {
+.board {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
   background-color: white;
-  color: grey;
-  padding: 10px;
+  color: black;
+  padding: 30px;
+  border: solid 1px black;
+}
+
+.header {
   display: flex;
   flex-direction: row;
-  width: 100%;
-  // height: 100vh;
-  // overflow-y: scroll;
+  border: solid 1px black;
+}
+
+.board h2 {
+  padding-bottom: 20px;
+  border: solid 1px black;
+}
+
+.add-list-button i {
+  padding: 0px;
+  margin: 0px;
+  color: grey;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  align-items: center;
+}
+
+.listsContainer {
+  display: flex;
+  flex-direction: row;
 }
 
 app-list {

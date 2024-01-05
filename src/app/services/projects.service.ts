@@ -21,22 +21,22 @@ export class ProjectService {
   }
 
   getProjects(): Observable<Project[]> {
-    return this.http.get<Project[]>(`${this.apiUrl}/projet`);
+    return this.http.get<Project[]>(`${this.apiUrl}/project`);
   }
 
   getProjectById(id: number): Observable<Project> {
-    return this.http.get<Project>(`${this.apiUrl}/projet/${id}`);
+    return this.http.get<Project>(`${this.apiUrl}/project/${id}`);
   }
 
   createProject(project: Project) {
-    return this.http.post(`${this.apiUrl}/projet`, project);
+    return this.http.post(`${this.apiUrl}/project`, project);
   }
 
   updateProject(project: Project) {
-    return this.http.put(`${this.apiUrl}/projet/${project.id}`, project);
+    return this.http.put(`${this.apiUrl}/project/${project.id}`, project);
   }
 
   deleteProject(id: number) {
-    return this.http.delete(`${this.apiUrl}/projet/${id}`);
+    return this.http.delete(`${this.apiUrl}/project/${id}`);
   }
 }

@@ -32,7 +32,15 @@
       <button (click)="sendProject()">Nouveau Project</button>
     </div>
   </div>
-  <div class="listsContainer">
-    <app-list class="list" *ngFor="let list of lists"></app-list>
+  <div class="board">
+    <div class="header">
+      <h2>Board</h2>
+      <div class="add-list-button" onclick="">
+        <i class="fa fa-plus-square-o fa-2x" aria-hidden="true"></i>
+      </div>
+    </div>
+    <div class="listsContainer">
+      <app-list class="list" *ngFor="let list of lists"></app-list>
+    </div>
   </div>
 </div>
