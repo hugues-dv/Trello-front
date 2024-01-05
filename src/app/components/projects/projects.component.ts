@@ -36,9 +36,11 @@ export class ProjectsComponent implements OnInit {
 
   selectProject(project: Project) {
     this.actualProject = project;
-    this.listsService.getListByProjectId(project.id).subscribe((lists: any) => {
-      this.lists = lists;
-    });
+    this.listsService
+      .getListByProjectId(Number(project.id))
+      .subscribe((lists: any) => {
+        this.lists = lists;
+      });
   }
 
   addList() {
@@ -48,7 +50,7 @@ export class ProjectsComponent implements OnInit {
       .createList({
         // id: newListId,
         name: 'Add name',
-        idProject: this.actualProject.id,
+        idProject: Number(this.actualProject.id),
       })
       .subscribe((list: any) => {
         this.lists.push(list);
@@ -57,12 +59,15 @@ export class ProjectsComponent implements OnInit {
   }
 
   sendProject() {
-    if (this.projectLabel.trim() !== '') {
-      let lastProjectId = this.getLastProjectId();
-      let newProjectId = lastProjectId ? lastProjectId + 1 : 1;
+    if (
+      this.projectLabel.trim() !== '' &&
+      this.projectDescription.trim() !== ''
+    ) {
+      // let lastProjectId = this.getLastProjectId();
+      // let newProjectId = lastProjectId ? lastProjectId + 1 : 1;
       this.projectsService
         .createProject({
-          id: newProjectId,
+          // id: newProjectId,
           name: this.projectLabel,
           description: this.projectDescription,
           createdAt: new Date(),
@@ -99,11 +104,11 @@ export class ProjectsComponent implements OnInit {
   //   return 0;
   // }
 
-  getLastProjectId(): number | undefined {
-    if (this.projects.length > 0) {
-      const lastProject = this.projects[this.projects.length - 1]; // Récupère le dernier projet
-      return Number(lastProject.id); // Renvoie l'ID du dernier projet
-    }
-    return undefined; // S'il n'y a pas de projet, renvoie undefined
-  }
+  // getLastProjectId(): number | undefined {
+  //   if (this.projects.length > 0) {
+  //     const lastProject = this.projects[this.projects.length - 1]; // Récupère le dernier projet
+  //     return Number(lastProject.id); // Renvoie l'ID du dernier projet
+  //   }
+  //   return undefined; // S'il n'y a pas de projet, renvoie undefined
+  // }
 }
