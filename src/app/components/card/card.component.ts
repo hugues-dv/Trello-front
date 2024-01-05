@@ -13,9 +13,9 @@ export class CardComponent {
 
   card:Card = {
     id: 1,
-    titre: "Reunio d'équipe",
+    title: "Reunio d'équipe",
     description: "Sprint 1",
-    dateCreation: new Date(Date.now()),
-    idListe: 3,
+    createdAt: new Date(Date.now()),
+    idList: 3,
   }
 }

@@ -4,11 +4,11 @@ import { ConfigService } from './config.service';
 import { Observable } from 'rxjs';
 
 export interface Card {
-  id: number;
-  titre: string;
+  id?: number;
+  title: string;
   description: string;
-  dateCreation: Date;
-  idListe: number;
+  createdAt: Date;
+  idList: number;
 }
 
 @Injectable({
@@ -22,22 +22,26 @@ export class CardService {
   }
 
   getCards(): Observable<Card[]> {
-    return this.http.get<Card[]>(`${this.apiUrl}/carte`);
+    return this.http.get<Card[]>(`${this.apiUrl}/card`);
   }
 
   getCardById(id: number): Observable<Card> {
-    return this.http.get<Card>(`${this.apiUrl}/carte/${id}`);
+    return this.http.get<Card>(`${this.apiUrl}/card/${id}`);
+  }
+
+  getCardByListId(listId: number): Observable<Card> {
+    return this.http.get<Card>(`${this.apiUrl}/card?listId=${listId}`);
   }
 
   createCard(card: Card) {
-    return this.http.post(`${this.apiUrl}/carte`, card);
+    return this.http.post(`${this.apiUrl}/card`, card);
   }
 
   updateCard(card: Card) {
-    return this.http.put(`${this.apiUrl}/carte/${card.id}`, card);
+    return this.http.put(`${this.apiUrl}/card/${card.id}`, card);
   }
 
   deleteCard(id: number) {
-    return this.http.delete(`${this.apiUrl}/carte/${id}`);
+    return this.http.delete(`${this.apiUrl}/card/${id}`);
   }
 }

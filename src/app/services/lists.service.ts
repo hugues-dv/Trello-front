@@ -4,8 +4,8 @@ import { ConfigService } from './config.service';
 import { Observable } from 'rxjs';
 
 export interface List {
-  id: number;
-  nom: string;
+  id?: number;
+  name: string;
   idProject: number;
 }
 
@@ -20,26 +20,26 @@ export class ListService {
   }
 
   getLists(): Observable<List[]> {
-    return this.http.get<List[]>(`${this.apiUrl}/liste`);
+    return this.http.get<List[]>(`${this.apiUrl}/list`);
   }
 
   getListById(id: number): Observable<List> {
-    return this.http.get<List>(`${this.apiUrl}/liste/${id}`);
+    return this.http.get<List>(`${this.apiUrl}/list/${id}`);
   }
 
   getListByProjectId(projectId: number): Observable<List> {
-    return this.http.get<List>(`${this.apiUrl}/liste?projectId=${projectId}`);
+    return this.http.get<List>(`${this.apiUrl}/list?projectId=${projectId}`);
   }
 
   createList(list: List) {
-    return this.http.post(`${this.apiUrl}/liste`, list);
+    return this.http.post(`${this.apiUrl}/list`, list);
   }
 
   updateList(list: List) {
-    return this.http.put(`${this.apiUrl}/liste/${list.id}`, list);
+    return this.http.put(`${this.apiUrl}/list/${list.id}`, list);
   }
 
   deleteList(id: number) {
-    return this.http.delete(`${this.apiUrl}/liste/${id}`);
+    return this.http.delete(`${this.apiUrl}/list/${id}`);
   }
 }
