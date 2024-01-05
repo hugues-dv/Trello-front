@@ -4,7 +4,7 @@ import { ConfigService } from './config.service';
 import { Observable } from 'rxjs';
 
 export interface List {
-  id: number;
+  id?: number;
   name: string;
   idProject: number;
 }
