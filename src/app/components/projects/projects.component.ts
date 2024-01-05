@@ -61,8 +61,11 @@ export class ProjectsComponent implements OnInit {
       this.projectLabel.trim() !== '' &&
       this.projectDescription.trim() !== ''
     ) {
+      let lastProjectId = this.getLastProjectId();
+      let newProjectId = lastProjectId ? lastProjectId + 1 : 1;
       this.projectsService
         .createProject({
+          id: newProjectId,
           name: this.projectLabel,
           description: this.projectDescription,
           createdAt: new Date(),
@@ -89,5 +92,13 @@ export class ProjectsComponent implements OnInit {
         };
       }
     });
+  }
+
+  getLastProjectId(): number | undefined {
+    if (this.projects.length > 0) {
+      const lastProject = this.projects[this.projects.length - 1]; // Récupère le dernier projet
+      return Number(lastProject.id); // Renvoie l'ID du dernier projet
+    }
+    return undefined; // S'il n'y a pas de projet, renvoie undefined
   }
 }

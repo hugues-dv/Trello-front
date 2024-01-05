@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 export interface List {
   id?: number;
   name: string;
-  idProject: number;
+  idProject?: number;
 }
 
 @Injectable({
@@ -27,7 +27,7 @@ export class ListService {
     return this.http.get<List>(`${this.apiUrl}/list/${id}`);
   }
 
-  getListByProjectId(projectId: number): Observable<List> {
+  getListByProjectId(projectId?: number): Observable<List> {
     return this.http.get<List>(`${this.apiUrl}/list?projectId=${projectId}`);
   }
 
