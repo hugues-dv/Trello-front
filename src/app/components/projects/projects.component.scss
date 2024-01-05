@@ -157,18 +157,16 @@ button {
   background-color: white;
   color: black;
   padding: 30px;
-  border: solid 1px black;
 }
 
 .header {
   display: flex;
   flex-direction: row;
-  border: solid 1px black;
+  justify-content: space-between;
 }
 
 .board h2 {
   padding-bottom: 20px;
-  border: solid 1px black;
 }
 
 .add-list-button i {
