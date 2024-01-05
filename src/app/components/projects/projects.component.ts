@@ -30,17 +30,17 @@ export class ProjectsComponent implements OnInit {
   ngOnInit() {
     this.projectsService.getProjects().subscribe((projects: Project[]) => {
       this.projects = projects;
-      this.selectProject(this.projects[0]);
+      if (this.projects[0]) {
+        this.selectProject(this.projects[0]);
+      }
     });
   }
 
   selectProject(project: Project) {
     this.actualProject = project;
-    this.listsService
-      .getListByProjectId(Number(project.id))
-      .subscribe((lists: any) => {
-        this.lists = lists;
-      });
+    this.listsService.getListByProjectId(project.id).subscribe((lists: any) => {
+      this.lists = lists;
+    });
   }
 
   addList() {
@@ -48,7 +48,7 @@ export class ProjectsComponent implements OnInit {
     this.listsService
       .createList({
         name: 'Add name',
-        idProject: Number(this.actualProject.id),
+        idProject: this.actualProject.id,
       })
       .subscribe((list: any) => {
         this.lists.push(list);
@@ -84,12 +84,12 @@ export class ProjectsComponent implements OnInit {
         (project) => project.id != Number(projectId)
       );
       if (this.actualProject && this.actualProject.id == Number(projectId)) {
-        this.actualProject = {
-          id: this.projects[0].id,
-          name: this.projects[0].name,
-          description: this.projects[0].description,
-          createdAt: this.projects[0].createdAt,
-        };
+        // this.actualProject = {
+        //   id: this.projects[0].id,
+        //   name: this.projects[0].name,
+        //   description: this.projects[0].description,
+        //   createdAt: this.projects[0].createdAt,
+        // };
       }
     });
   }
