@@ -149,12 +149,13 @@ button {
   color: white;
 }
 
+.Flex-Container{
+  display: flex;
+}
 .listsContainer {
   background-color: white;
   color: grey;
   padding: 10px;
-  display: flex;
-  flex-direction: row;
   width: 100%;
   // height: 100vh;
   // overflow-y: scroll;
@@ -172,10 +173,17 @@ app-list:not(:last-child) {
 }
 
 .card {
-  height: 200px;
-  background-color: gray;
+  height: 150px;
+  width: 230px;
+  background-color:#5e2880;
+  display:block;
+  
 }
 
 .card:not(:last-child) {
-  margin-bottom: 5px;
+  margin-bottom: 1px;
+}
+.list{
+  flex-direction: column;
+  
 }
