@@ -9,12 +9,12 @@
         <button class="buttonDelete" (click)="deleteProject(project.id)">
           X
         </button>
-        <button class="thread">
+        <button class="project">
           {{ project.name }} {{ project.description }}
         </button>
       </div>
     </div>
-    <div class="add-thread">
+    <div class="add-project">
       <input
         type="text"
         [(ngModel)]="this.projectLabel"
@@ -35,8 +35,8 @@
   <div class="board">
     <div class="header">
       <h2>Board</h2>
-      <div class="add-list-button" onclick="">
-        <i class="fa fa-plus-square-o fa-2x" aria-hidden="true"></i>
+      <div class="add-list-button" (click)="addList()">
+        Add list <i class="fa fa-plus-square-o" aria-hidden="true"></i>
       </div>
     </div>
     <div class="listsContainer">

@@ -24,16 +24,8 @@ export class ProjectsComponent implements OnInit {
 
   constructor(
     public projectsService: ProjectService,
-    public listsService: ListService,
-    public cardsService: CardService
+    public listsService: ListService
   ) {}
-
-  selectProject(project: Project) {
-    this.actualProject = project;
-    this.listsService.getListByProjectId(project.id).subscribe((lists: any) => {
-      this.lists = lists;
-    });
-  }
 
   ngOnInit() {
     this.projectsService.getProjects().subscribe((projects: Project[]) => {
@@ -42,22 +34,27 @@ export class ProjectsComponent implements OnInit {
     });
   }
 
-  sendList() {
-    if (this.listName.trim() !== '') {
-      let lastListId = this.getLastListId();
-      let newListId = lastListId ? lastListId + 1 : 1;
-      this.listsService
-        .createList({
-          id: newListId,
-          name: this.listName,
-          idProject: this.actualProject.id,
-        })
-        .subscribe((list: any) => {
-          this.lists.push(list);
-          this.listName = '';
-        });
-    }
+  selectProject(project: Project) {
+    this.actualProject = project;
+    this.listsService.getListByProjectId(project.id).subscribe((lists: any) => {
+      this.lists = lists;
+    });
   }
+
+  addList() {
+    let newListId = this.getLastListId() + 1;
+    this.listsService
+      .createList({
+        id: newListId,
+        name: 'Add name',
+        idProject: this.actualProject.id,
+      })
+      .subscribe((list: any) => {
+        this.lists.push(list);
+        this.listName = '';
+      });
+  }
+
   sendProject() {
     if (this.projectLabel.trim() !== '') {
       let lastProjectId = this.getLastProjectId();
@@ -93,12 +90,12 @@ export class ProjectsComponent implements OnInit {
     });
   }
 
-  getLastListId(): number | undefined {
+  getLastListId(): number {
     if (this.lists.length > 0) {
       const lastList = this.lists[this.lists.length - 1];
       return Number(lastList.id);
     }
-    return undefined;
+    return 0;
   }
 
   getLastProjectId(): number | undefined {
