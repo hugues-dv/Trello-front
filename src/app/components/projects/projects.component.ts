@@ -42,10 +42,11 @@ export class ProjectsComponent implements OnInit {
   }
 
   addList() {
-    let newListId = this.getLastListId() + 1;
+    console.log(this.actualProject);
+    // let newListId = this.getLastListId() + 1;
     this.listsService
       .createList({
-        id: newListId,
+        // id: newListId,
         name: 'Add name',
         idProject: this.actualProject.id,
       })
@@ -90,13 +91,13 @@ export class ProjectsComponent implements OnInit {
     });
   }
 
-  getLastListId(): number {
-    if (this.lists.length > 0) {
-      const lastList = this.lists[this.lists.length - 1];
-      return Number(lastList.id);
-    }
-    return 0;
-  }
+  // getLastListId(): number {
+  //   if (this.lists.length > 0) {
+  //     const lastList = this.lists[this.lists.length - 1];
+  //     return Number(lastList.id);
+  //   }
+  //   return 0;
+  // }
 
   getLastProjectId(): number | undefined {
     if (this.projects.length > 0) {

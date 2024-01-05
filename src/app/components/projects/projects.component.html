@@ -9,7 +9,7 @@
         <button class="buttonDelete" (click)="deleteProject(project.id)">
           X
         </button>
-        <button class="project">
+        <button class="project" (click)="selectProject(project)">
           {{ project.name }} {{ project.description }}
         </button>
       </div>
