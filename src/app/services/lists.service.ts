@@ -42,23 +42,4 @@ export class ListService {
   deleteList(id: number) {
     return this.http.delete(`${this.apiUrl}/list/${id}`);
   }
-  getListes() {
-    return this.http.get(`${this.apiUrl}/listes`);
-  }
-
-  getListeById(id: number) {
-    return this.http.get<List>(`${this.apiUrl}/listes/${id}`);
-  }
-
-  createListe(liste: List) {
-    return this.http.post(`${this.apiUrl}/listes`, liste);
-  }
-
-  updateListe(liste: List) {
-    return this.http.put(`${this.apiUrl}/listes/${liste.id}`, liste);
-  }
-
-  deleteListe(id: string) {
-    return this.http.delete(`${this.apiUrl}/listes/${id}`);
-  }
 }
