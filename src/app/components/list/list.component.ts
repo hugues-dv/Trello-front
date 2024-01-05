@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CardComponent } from '../card/card.component';
 import { List, ListsService } from '../../services/lists.service';
@@ -10,7 +10,7 @@ import { List, ListsService } from '../../services/lists.service';
   templateUrl: './list.component.html',
   styleUrl: './list.component.scss',
 })
-export class ListComponent {
+export class ListComponent implements OnInit {
   list: List = {
     id: 2,
     nom: 'You',
