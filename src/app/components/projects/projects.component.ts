@@ -18,7 +18,7 @@ export class ProjectsComponent implements OnInit {
   actualProject!: Project;
   lists!: List[];
   @Input()
-  listNom!: string;
+  listName!: string;
   projectLabel!: string;
   projectDescription!: string;
 
@@ -32,6 +32,7 @@ export class ProjectsComponent implements OnInit {
     this.actualProject = project;
     this.listsService.getListByProjectId(project.id).subscribe((lists: any) => {
       this.lists = lists;
+      console.log(lists);
     });
   }
 
@@ -43,18 +44,18 @@ export class ProjectsComponent implements OnInit {
   }
 
   sendList() {
-    if (this.listNom.trim() !== '') {
+    if (this.listName.trim() !== '') {
       let lastListId = this.getLastListId();
       let newListId = lastListId ? lastListId + 1 : 1;
       this.listsService
         .createList({
           id: newListId,
-          nom: this.listNom,
+          name: this.listName,
           idProject: this.actualProject.id,
         })
         .subscribe((list: any) => {
           this.lists.push(list);
-          this.listNom = '';
+          this.listName = '';
         });
     }
   }
@@ -65,9 +66,9 @@ export class ProjectsComponent implements OnInit {
       this.projectsService
         .createProject({
           id: newProjectId,
-          nom: this.projectLabel,
+          name: this.projectLabel,
           description: this.projectDescription,
-          dateCreation: new Date(),
+          createdAt: new Date(),
         })
         .subscribe((project: any) => {
           this.projects.push(project);
@@ -85,9 +86,9 @@ export class ProjectsComponent implements OnInit {
       if (this.actualProject && this.actualProject.id == Number(projectId)) {
         this.actualProject = {
           id: this.projects[0].id,
-          nom: this.projects[0].nom,
+          name: this.projects[0].name,
           description: this.projects[0].description,
-          dateCreation: this.projects[0].dateCreation,
+          createdAt: this.projects[0].createdAt,
         };
       }
     });

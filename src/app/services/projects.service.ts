@@ -5,9 +5,9 @@ import { Observable } from 'rxjs';
 
 export interface Project {
   id: number;
-  nom: string;
+  name: string;
   description: string;
-  dateCreation: Date;
+  createdAt: Date;
 }
 
 @Injectable({

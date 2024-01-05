@@ -5,10 +5,10 @@ import { Observable } from 'rxjs';
 
 export interface Comment {
   id: number;
-  contenu: string;
-  dateCreation: Date;
-  idCarte: number;
-  utilisateur: string;
+  content: string;
+  createdAt: Date;
+  idCard: number;
+  user: string;
 }
 
 @Injectable({

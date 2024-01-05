@@ -5,10 +5,10 @@ import { Observable } from 'rxjs';
 
 export interface Card {
   id: number;
-  titre: string;
+  title: string;
   description: string;
-  dateCreation: Date;
-  idListe: number;
+  createdAt: Date;
+  idList: number;
 }
 
 @Injectable({

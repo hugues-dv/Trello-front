@@ -10,7 +10,7 @@
           X
         </button>
         <button class="thread">
-          {{ project.nom }} {{ project.description }}
+          {{ project.name }} {{ project.description }}
         </button>
       </div>
     </div>
@@ -33,8 +33,6 @@
     </div>
   </div>
   <div class="listsContainer">
-    <div class="list" *ngFor="let list of lists">
-      <app-list></app-list>
-    </div>
+    <app-list class="list" *ngFor="let list of lists"></app-list>
   </div>
 </div>

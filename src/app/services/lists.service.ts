@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 
 export interface List {
   id: number;
-  nom: string;
+  name: string;
   idProject: number;
 }
 
