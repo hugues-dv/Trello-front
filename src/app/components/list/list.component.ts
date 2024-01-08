@@ -33,4 +33,6 @@ export class ListComponent implements OnInit {
       // });
     }
   }
+  addCard() {}
+  removeList() {}
 }
