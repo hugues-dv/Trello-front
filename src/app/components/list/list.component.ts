@@ -17,6 +17,7 @@ export class ListComponent implements OnInit {
   Cards!: Card[];
   listsDatas!: Object;
   @Input()
+  projectId!: number;
   listName!: string;
 
   constructor(
@@ -24,12 +25,12 @@ export class ListComponent implements OnInit {
     public cardService: CardService
   ) {}
 
-  // ngOnInit() {
-  //   this.listsService
-  //     .getListById(Number(this.actualList.id))
-  //     .subscribe((actualList: List) => {
-  //       this.actualList = actualList;
-  //     });
-  // }
-  ngOnInit() {}
+  ngOnInit() {
+    if (this.projectId) {
+      this.listService.getListByProjectId(this.projectId);
+      // .subscribe((lists!: List[]) => {
+      //   this.lists = lists;
+      // });
+    }
+  }
 }
