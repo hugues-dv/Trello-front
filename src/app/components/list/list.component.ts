@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CardComponent } from '../card/card.component';
 import { List, ListService } from '../../services/lists.service';
+import { Card, CardService } from '../../services/cards.service';
 
 @Component({
   selector: 'app-list',
@@ -11,11 +12,27 @@ import { List, ListService } from '../../services/lists.service';
   styleUrl: './list.component.scss',
 })
 export class ListComponent implements OnInit {
-  constructor(private listsService: ListService) {}
+  lists!: List[];
+  actualList!: List;
+  Cards!: Card[];
+  listsDatas!: Object;
+  @Input()
+  projectId!: number;
+  listName!: string;
 
-  ngOnInit() {}
+  constructor(
+    public listService: ListService,
+    public cardService: CardService
+  ) {}
 
+  ngOnInit() {
+    if (this.projectId) {
+      this.listService.getListByProjectId(this.projectId);
+      // .subscribe((lists!: List[]) => {
+      //   this.lists = lists;
+      // });
+    }
+  }
   addCard() {}
-
   removeList() {}
 }
