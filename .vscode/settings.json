@@ -16,5 +16,7 @@
     "src/app/components/list/list.component.spec.ts",
     "src/app/components/card/card.component.spec.ts",
     "src/app/components/auth/auth.component.spec.ts"
-  ]
+  ],
+  "appService.defaultWebAppToDeploy": "/subscriptions/309bc642-ef0f-4fae-bbaf-e0ea3bd2465e/resourceGroups/trelloHuguesdeVregille_group/providers/Microsoft.Web/sites/trelloHuguesdeVregille",
+  "appService.deploySubpath": "dist"
 }

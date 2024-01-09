@@ -30,6 +30,7 @@ export class ListComponent implements OnInit {
       this.listService.getListByProjectId(this.projectId);
     }
   }
+  updateList() {}
   addCard() {}
   removeList() {}
 }
