@@ -17,8 +17,6 @@ export class ProjectsComponent implements OnInit {
   actualProject!: Project;
   lists!: List[];
   projectsDatas!: Object;
-  @Input()
-  listName!: string;
   projectLabel!: string;
   projectDescription!: string;
 
@@ -51,7 +49,6 @@ export class ProjectsComponent implements OnInit {
       })
       .subscribe((list: any) => {
         this.lists.push(list);
-        this.listName = '';
       });
   }
 

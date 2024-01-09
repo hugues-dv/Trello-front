@@ -3,34 +3,43 @@ import { CommonModule } from '@angular/common';
 import { CardComponent } from '../card/card.component';
 import { List, ListService } from '../../services/lists.service';
 import { Card, CardService } from '../../services/cards.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-list',
   standalone: true,
-  imports: [CommonModule, CardComponent, ListComponent],
+  imports: [CommonModule, CardComponent, ListComponent, FormsModule],
   templateUrl: './list.component.html',
   styleUrl: './list.component.scss',
 })
 export class ListComponent implements OnInit {
-  lists!: List[];
-  actualList!: List;
-  Cards!: Card[];
-  listsDatas!: Object;
-  @Input()
-  projectId!: number;
-  listName!: string;
+  cards!: Card[];
 
   constructor(
     public listService: ListService,
     public cardService: CardService
   ) {}
+  @Input()
+  list!: List;
 
   ngOnInit() {
-    if (this.projectId) {
-      this.listService.getListByProjectId(this.projectId);
-    }
+    this.cardService.getCardByListId(this.list.id).subscribe((cards: any) => {
+      this.cards = cards;
+    });
   }
-  updateList() {}
+
+  getListById() {
+    this.listService.getListById(this.list.id).subscribe((list: List) => {
+      this.list = list;
+    });
+  }
+
+  updateList() {
+    console.log(this.list);
+    this.listService.updateList(this.list).subscribe(() => {});
+  }
+
   addCard() {}
+
   removeList() {}
 }

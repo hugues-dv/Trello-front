@@ -1,4 +1,10 @@
-<input type="text" class="input-list-name" value="Texte simple" />
+<input
+  type="text"
+  class="input-list-name"
+  [(ngModel)]="list.name"
+  (keyup.enter)="this.updateList()"
+  (focusout)="getListById()"
+/>
 <div class="list-header">
   <div title="Remove list" class="remove-list-button" (click)="removeList()">
     Remove list <i class="fa fa-minus-square-o" aria-hidden="true"></i>
