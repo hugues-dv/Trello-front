@@ -23,6 +23,7 @@ export class ListComponent implements OnInit {
   list!: List;
 
   ngOnInit() {
+<<<<<<< HEAD
     this.cardService.getCardByListId(this.list.id).subscribe((cards: any) => {
       this.cards = cards;
     });
@@ -39,6 +40,21 @@ export class ListComponent implements OnInit {
     this.listService.updateList(this.list).subscribe(() => {});
   }
 
+=======
+    if (this.projectId) {
+      this.listService
+        .getListByProjectId(this.projectId)
+        .subscribe((lists: List[]) => {
+          this.lists = lists;
+        });
+    }
+  }
+  updateList(listName: string) {
+    // if (this.listName.trim() !== '') {
+    alert(this.listName);
+    // }
+  }
+>>>>>>> d024a70e94c14390f53609da5184b23c1aa04b83
   addCard() {}
 
   removeList() {}
