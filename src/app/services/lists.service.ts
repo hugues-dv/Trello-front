@@ -27,8 +27,8 @@ export class ListService {
     return this.http.get<List>(`${this.apiUrl}/list/${id}`);
   }
 
-  getListByProjectId(projectId?: number): Observable<List> {
-    return this.http.get<List>(`${this.apiUrl}/list?projectId=${projectId}`);
+  getListByProjectId(projectId?: number): Observable<List[]> {
+    return this.http.get<List[]>(`${this.apiUrl}/list?projectId=${projectId}`);
   }
 
   createList(list: List) {

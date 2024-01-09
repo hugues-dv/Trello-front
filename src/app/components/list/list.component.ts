@@ -27,13 +27,18 @@ export class ListComponent implements OnInit {
 
   ngOnInit() {
     if (this.projectId) {
-      this.listService.getListByProjectId(this.projectId);
-      // .subscribe((lists!: List[]) => {
-      //   this.lists = lists;
-      // });
+      this.listService
+        .getListByProjectId(this.projectId)
+        .subscribe((lists: List[]) => {
+          this.lists = lists;
+        });
     }
   }
-  updateList() {}
+  updateList(listName: string) {
+    // if (this.listName.trim() !== '') {
+    alert(this.listName);
+    // }
+  }
   addCard() {}
   removeList() {}
 }
