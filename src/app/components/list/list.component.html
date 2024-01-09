@@ -1,14 +1,8 @@
-<div title="Remove list" class="remove-list-button" (click)="removeList()">
-  Remove list <i class="fa fa-minus-square-o" aria-hidden="true"></i>
-</div>
+<input type="text" class="input-list-name" value="Texte simple" />
 <div class="list-header">
-  <input
-    type="text"
-    class="input-list-name"
-    value="listName"
-    placeholder="Texte Simple"
-    (keyup.enter)="this.updateList(this.listName)"
-  />
+  <div title="Remove list" class="remove-list-button" (click)="removeList()">
+    Remove list <i class="fa fa-minus-square-o" aria-hidden="true"></i>
+  </div>
   <div class="add-card-button" (click)="addCard()">
     Add card <i class="fa fa-plus-square-o" aria-hidden="true"></i>
   </div>
