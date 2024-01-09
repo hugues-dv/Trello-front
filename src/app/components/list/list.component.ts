@@ -38,7 +38,7 @@ export class ListComponent implements OnInit {
     this.listService.updateList(this.list).subscribe(() => {});
   }
 
-  addCard() {}
+  addCard() {} //"id,title,description,createdAt,idList"
 
   removeList() {}
 }
