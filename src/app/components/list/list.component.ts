@@ -8,7 +8,7 @@ import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-list',
   standalone: true,
-  imports: [CommonModule, CardComponent, ListComponent, FormsModule],
+  imports: [CommonModule, CardComponent, FormsModule],
   templateUrl: './list.component.html',
   styleUrl: './list.component.scss',
 })
@@ -50,7 +50,7 @@ export class ListComponent implements OnInit {
       .subscribe((card: any) => {
         this.cards.push(card);
       });
-  } //"id, description, createdAt, idList"
+  }
 
   removeList() {
     // Envoie la list à supprimer au composant parent en déclenchant un event car impossible de mettre à jour

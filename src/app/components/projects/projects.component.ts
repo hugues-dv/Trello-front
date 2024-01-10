@@ -57,8 +57,6 @@ export class ProjectsComponent implements OnInit {
       this.projectLabel.trim() !== '' &&
       this.projectDescription.trim() !== ''
     ) {
-      // let lastProjectId = this.getLastProjectId();
-      // let newProjectId = lastProjectId ? lastProjectId + 1 : 1;
       this.projectsService
         .createProject({
           name: this.projectLabel,
@@ -79,24 +77,7 @@ export class ProjectsComponent implements OnInit {
       this.projects = this.projects.filter(
         (project) => project.id != Number(projectId)
       );
-      if (this.actualProject && this.actualProject.id == Number(projectId)) {
-        // this.actualProject = {
-        //   id: this.projects[0].id,
-        //   name: this.projects[0].name,
-        //   description: this.projects[0].description,
-        //   createdAt: this.projects[0].createdAt,
-        // };
-      }
     });
-  }
-
-<<<<<<< HEAD
-  getLastProjectId(): number | undefined {
-    if (this.projects.length > 0) {
-      const lastProject = this.projects[this.projects.length - 1]; // Récupère le dernier projet
-      return Number(lastProject.id); // Renvoie l'ID du dernier projet
-    }
-    return undefined; // S'il n'y a pas de projet, renvoie undefined
   }
 
   deleteList(list: List) {
@@ -104,13 +85,4 @@ export class ProjectsComponent implements OnInit {
       this.lists = this.lists.filter((list) => list.id !== list.id);
     });
   }
-=======
-  // getLastProjectId(): number | undefined {
-  //   if (this.projects.length > 0) {
-  //     const lastProject = this.projects[this.projects.length - 1]; // Récupère le dernier projet
-  //     return Number(lastProject.id); // Renvoie l'ID du dernier projet
-  //   }
-  //   return undefined; // S'il n'y a pas de projet, renvoie undefined
-  // }
->>>>>>> 018dbccf9e99652f4afd62dabc67bd85c5cb8180
 }
