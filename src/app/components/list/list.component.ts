@@ -39,7 +39,18 @@ export class ListComponent implements OnInit {
     this.listService.updateList(this.list).subscribe(() => {});
   }
 
-  addCard() {}
+  addCard() {
+    this.cardService
+      .createCard({
+        title: 'titre',
+        description: 'description',
+        createdAt: new Date(),
+        idList: this.list.id,
+      })
+      .subscribe((card: any) => {
+        this.cards.push(card);
+      });
+  } //"id, description, createdAt, idList"
 
   removeList() {
     // Envoie la list à supprimer au composant parent en déclenchant un event car impossible de mettre à jour

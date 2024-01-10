@@ -4,11 +4,11 @@ import { ConfigService } from './config.service';
 import { Observable } from 'rxjs';
 
 export interface Card {
-  id: number;
+  id?: number;
   title: string;
   description: string;
   createdAt: Date;
-  idList: number;
+  idList?: number;
 }
 
 @Injectable({
@@ -25,7 +25,7 @@ export class CardService {
     return this.http.get<Card[]>(`${this.apiUrl}/card`);
   }
 
-  getCardById(id: number): Observable<Card> {
+  getCardById(id?: number): Observable<Card> {
     return this.http.get<Card>(`${this.apiUrl}/card/${id}`);
   }
 
