@@ -25,11 +25,11 @@ export class CommentService {
     return this.http.get<Comment[]>(`${this.apiUrl}/comment`);
   }
 
-  getCommentById(id: number): Observable<Comment> {
+  getCommentById(id?: number): Observable<Comment> {
     return this.http.get<Comment>(`${this.apiUrl}/comment/${id}`);
   }
 
-  getCommentByCardId(cardId: number): Observable<Comment[]> {
+  getCommentByCardId(cardId?: number): Observable<Comment[]> {
     return this.http.get<Comment[]>(`${this.apiUrl}/comment?cardId=${cardId}`);
   }
 
