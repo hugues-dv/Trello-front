@@ -39,7 +39,7 @@ export class ListService {
     return this.http.put(`${this.apiUrl}/list/${list.id}`, list);
   }
 
-  deleteList(id: number) {
+  deleteList(id?: number) {
     return this.http.delete(`${this.apiUrl}/list/${id}`);
   }
 }

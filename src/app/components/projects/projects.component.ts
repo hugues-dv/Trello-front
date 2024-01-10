@@ -61,7 +61,6 @@ export class ProjectsComponent implements OnInit {
       let newProjectId = lastProjectId ? lastProjectId + 1 : 1;
       this.projectsService
         .createProject({
-          id: newProjectId,
           name: this.projectLabel,
           description: this.projectDescription,
           createdAt: new Date(),
@@ -75,7 +74,7 @@ export class ProjectsComponent implements OnInit {
     }
   }
 
-  deleteProject(projectId: number) {
+  deleteProject(projectId?: number) {
     this.projectsService.deleteProject(projectId).subscribe(() => {
       this.projects = this.projects.filter(
         (project) => project.id != Number(projectId)
@@ -97,5 +96,11 @@ export class ProjectsComponent implements OnInit {
       return Number(lastProject.id); // Renvoie l'ID du dernier projet
     }
     return undefined; // S'il n'y a pas de projet, renvoie undefined
+  }
+
+  deleteList(list: List) {
+    this.listsService.deleteList(list.id).subscribe(() => {
+      this.lists = this.lists.filter((list) => list.id !== list.id);
+    });
   }
 }
