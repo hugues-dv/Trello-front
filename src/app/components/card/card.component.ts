@@ -26,7 +26,7 @@ export class CardComponent implements OnInit {
   ngOnInit() {
     this.cardService.getCardByListId(this.listId).subscribe((cards: Card[]) => {
       this.cards = cards;
-      this.card = this.cards.find((c) => c.id === this.cardId);
+      // this.card = this.cards.find((c) => c.id === this.cardId);
       // Chargez les commentaires pour cette carte si nécessaire
       this.loadComments();
     });
