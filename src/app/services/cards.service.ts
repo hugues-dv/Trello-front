@@ -30,7 +30,7 @@ export class CardService {
   }
 
   getCardByListId(listId?: number): Observable<Card[]> {
-    return this.http.get<Card[]>(`${this.apiUrl}/card?listId=${listId}`);
+    return this.http.get<Card[]>(`${this.apiUrl}/card?idList=${listId}`);
   }
 
   createCard(card: Card) {

@@ -14,6 +14,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class ListComponent implements OnInit {
   cards!: Card[];
+  listId!: number;
 
   constructor(
     public listService: ListService,
@@ -24,6 +25,9 @@ export class ListComponent implements OnInit {
   @Output() rmList = new EventEmitter<any>();
 
   ngOnInit() {
+    if (this.list.id) {
+      this.listId = this.list.id;
+    }
     this.cardService.getCardByListId(this.list.id).subscribe((cards: any) => {
       this.cards = cards;
     });
