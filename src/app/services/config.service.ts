@@ -9,5 +9,6 @@ export class ConfigService {
 
   getApiUrl(): string {
     return `${environment.domain}:${environment.port}`;
+    // return `https://minitrelloback.azurewebsites.net`;
   }
 }

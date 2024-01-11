@@ -15,6 +15,7 @@ import { FormsModule } from '@angular/forms';
 export class ListComponent implements OnInit {
   cards!: Card[];
   listId!: number;
+  test: number[] = [1, 2, 3, 4, 5, 6];
 
   constructor(
     public listService: ListService,

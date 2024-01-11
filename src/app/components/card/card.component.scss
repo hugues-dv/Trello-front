@@ -1,10 +1,6 @@
 .card {
   height: 200px;
   background-color: grey;
-}
-
-.card:not(:last-child) {
-  margin-bottom: 5px;
-  padding: 5px;
-  margin: 5px;
+  margin-top: 5px;
+  color: white;
 }
