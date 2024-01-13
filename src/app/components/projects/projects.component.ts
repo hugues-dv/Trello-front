@@ -82,7 +82,7 @@ export class ProjectsComponent implements OnInit {
 
   deleteList(list: List) {
     this.listsService.deleteList(list.id).subscribe(() => {
-      this.lists = this.lists.filter((list) => list.id !== list.id);
+      this.lists = this.lists.filter((actualList) => actualList.id !== list.id);
     });
   }
 }

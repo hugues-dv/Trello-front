@@ -11,26 +11,18 @@ import { Card, CardService } from '../../services/cards.service';
   styleUrl: './card.component.scss',
 })
 export class CardComponent implements OnInit {
-  @Input()
-  listId!: number; // Propriété pour l'ID de la liste
-  cardId!: number; // Propriété pour l'ID de la carte
-  cards!: Card[]; // Stockage des détails des cartes
-  card!: Card | undefined; // Stockage des détails de la carte
-  comments!: Comment[]; // Tableau pour stocker les commentaires
-
   constructor(
     private cardService: CardService,
     private commentService: CommentService
   ) {}
+  @Input()
+  card!: Card; // Stockage des détails de la carte
+  listId!: number; // Propriété pour l'ID de la liste
+  cardId!: number; // Propriété pour l'ID de la carte
+  cards!: Card[]; // Stockage des détails des cartes
+  comments!: Comment[]; // Tableau pour stocker les commentaires
 
-  ngOnInit() {
-    this.cardService.getCardByListId(this.listId).subscribe((cards: Card[]) => {
-      this.cards = cards;
-      // this.card = this.cards.find((c) => c.id === this.cardId);
-      // Chargez les commentaires pour cette carte si nécessaire
-      this.loadComments();
-    });
-  }
+  ngOnInit() {}
 
   loadComments() {
     if (this.card) {
