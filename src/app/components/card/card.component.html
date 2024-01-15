@@ -12,5 +12,5 @@
   <button type="submit">Ajouter</button>
 </form>
 <div class="comment" *ngFor="let comment of comments">
-  <app-comment></app-comment>
+  <app-comment [comment]="comment"> </app-comment>
 </div>
