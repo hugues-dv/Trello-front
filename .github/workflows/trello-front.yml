@@ -1,7 +1,7 @@
 name: Trello Workflow
 on:
   push:
-    branches: [main]
+    branches: [testCICD]
 
 jobs:
   build:
@@ -16,5 +16,4 @@ jobs:
       - name: Package install
         run: npm i
       - name: Build
-        run: cd buildangular
-          ng build
+        run: ng build
