@@ -16,6 +16,4 @@ jobs:
       - name: Package install
         run: npm i
       - name: Build
-        run: |
-          cd buildangular
-          ng build
+        run: ng build
