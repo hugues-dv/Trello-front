@@ -1,1 +1,16 @@
-<div class="card"></div>
+<p>{{ card.title }}</p>
+<p>{{ card.description }}</p>
+<p>{{ card.id }}</p>
+<form (ngSubmit)="addComment()">
+  <label for="commentText">Ajouter un commentaire :</label>
+  <textarea
+    id="commentText"
+    [(ngModel)]="commentText"
+    name="commentText"
+    required
+  ></textarea>
+  <button type="submit">Ajouter</button>
+</form>
+<div class="comment" *ngFor="let comment of comments">
+  <app-comment></app-comment>
+</div>

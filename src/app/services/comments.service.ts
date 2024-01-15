@@ -4,10 +4,10 @@ import { ConfigService } from './config.service';
 import { Observable } from 'rxjs';
 
 export interface Comment {
-  id: number;
+  id?: number;
   content: string;
   createdAt: Date;
-  idCard: number;
+  idCard?: number;
   user: string;
 }
 
