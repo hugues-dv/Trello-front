@@ -24,8 +24,7 @@ export class CardComponent implements OnInit {
   cards!: Card[]; // Stockage des détails des cartes
   comments!: Comment[]; // Tableau pour stocker les commentaires
   comment!: Comment; // stockage d'un commentaire
-  commentText!: string;
-
+  commentText: string = '';
   ngOnInit() {
     if (this.card) {
       this.commentService

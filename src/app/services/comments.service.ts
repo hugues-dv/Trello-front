@@ -30,7 +30,7 @@ export class CommentService {
   }
 
   getCommentByCardId(cardId?: number): Observable<Comment[]> {
-    return this.http.get<Comment[]>(`${this.apiUrl}/comment?cardId=${cardId}`);
+    return this.http.get<Comment[]>(`${this.apiUrl}/comment?idCard=${cardId}`);
   }
 
   createComment(comment: Comment) {
