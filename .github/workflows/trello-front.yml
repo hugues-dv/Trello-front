@@ -1,7 +1,7 @@
 name: Trello Workflow
 on:
   push:
-    branches: [testCICD]
+    branches: [main]
 
 jobs:
   build:
@@ -13,9 +13,7 @@ jobs:
         uses: actions/setup-node@v4.0.1
         with:
           node-version: 18.17.1
-      # - name: Angular install
-      #   run: npm install @angular/cli
       - name: Package install
         run: npm i
       - name: Build
-        run: npx ng build --verbose
+        run: npx ng build
