@@ -11,8 +11,6 @@ jobs:
         uses: actions/checkout@v4.1.1
       - name: Node install
         uses: actions/setup-node@v4.0.1
-        with:
-          node-version: 18
       - name: Angular install
         run: npm install -g @angular/cli
       - name: Package install
