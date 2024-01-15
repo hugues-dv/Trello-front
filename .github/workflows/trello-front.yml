@@ -18,4 +18,4 @@ jobs:
       - name: Package install
         run: npm i
       - name: Build
-        run: ng build
+        run: ng build --version
