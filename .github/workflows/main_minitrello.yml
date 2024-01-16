@@ -20,6 +20,8 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: "21.x"
+      - name: Set up angular cli
+        run: npm install -g @angular/cli
       - name: update angular version
         run: ng update @angular/core@latest
 
