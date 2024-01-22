@@ -10,11 +10,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4.1.1
       - name: Node install
-        run: sudo apt-get install -y nodejs
-      - name: Angular install
-        run: npm install -g @angular/cli
+        uses: actions/setup-node@v4.0.1
+        with:
+          node-version: 18.17.1
       - name: Package install
         run: npm i
       - name: Build
-        run: cd buildangular
-          ng build
+        run: npx ng build

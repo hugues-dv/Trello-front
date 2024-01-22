@@ -24,7 +24,7 @@ export class CardComponent implements OnInit {
   cards!: Card[]; // Stockage des détails des cartes
   comments!: Comment[]; // Tableau pour stocker les commentaires
   comment!: Comment; // stockage d'un commentaire
-  commentText: string = '';
+  commentText: string = 'ajoutez un commentaire';
 
   ngOnInit() {
     if (this.card) {
@@ -46,5 +46,14 @@ export class CardComponent implements OnInit {
       .subscribe((comment: any) => {
         this.comments.push(comment);
       });
+  }
+  updateCard() {
+    this.cardService.updateCard(this.card).subscribe(() => {});
+  }
+
+  getCardById() {
+    this.cardService.getCardById(this.card.id).subscribe((card: Card) => {
+      this.card = card;
+    });
   }
 }
