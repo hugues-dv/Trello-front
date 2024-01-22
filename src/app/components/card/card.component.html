@@ -22,9 +22,11 @@
   <app-comment [comment]="comment" (rmComment)="deleteComment($event)">
   </app-comment>
 </div>
-<input
-  type="text"
-  class="input-comment comment-add"
-  [(ngModel)]="this.commentText"
-  (keyup.enter)="this.addComment()"
-/>
+<div class="addCommentContainer">
+  <input
+    type="text"
+    class="input-comment comment-add"
+    [(ngModel)]="this.commentText"
+    (keyup.enter)="this.addComment()"
+  />
+</div>
