@@ -1,1 +1,2 @@
-<app-projects></app-projects>
+<app-auth *ngIf="!this.user"></app-auth>
+<app-projects *ngIf="this.user"></app-projects>

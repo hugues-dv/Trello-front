@@ -41,7 +41,7 @@ export class CardComponent implements OnInit {
         content: this.commentText,
         createdAt: new Date(),
         idCard: this.card.id,
-        user: 'user',
+        // idUser: this.user.id,
       })
       .subscribe((comment: any) => {
         this.comments.push(comment);
