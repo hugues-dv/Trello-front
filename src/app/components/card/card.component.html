@@ -1,7 +1,7 @@
-<div title="Remove card" class="remove-card-button" (click)="removeCard()">
-  <i class="fa fa-trash" aria-hidden="true"></i>
-</div>
 <div class="container-card">
+  <div title="Remove card" class="remove-card-button" (click)="removeCard()">
+    <i class="fa fa-trash" aria-hidden="true"></i>
+  </div>
   <input
     type="text"
     class="input-card card-title"
@@ -25,6 +25,7 @@
 <div class="addCommentContainer">
   <input
     type="text"
+    placeholder="Ajoutez un commentaire !"
     class="input-comment comment-add"
     [(ngModel)]="this.commentText"
     (keyup.enter)="this.addComment()"
