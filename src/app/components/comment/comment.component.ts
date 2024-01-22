@@ -21,4 +21,15 @@ export class CommentComponent implements OnInit {
     // sans recharger la page.
     this.rmComment.emit(this.comment);
   }
+  formaterTimestamp() {
+    let date = new Date(this.comment.createdAt);
+    let jour = date.getDate().toString().padStart(2, '0');
+    let mois = (date.getMonth() + 1).toString().padStart(2, '0'); // Janvier = 0
+    let annee = date.getFullYear();
+    let heures = date.getHours().toString().padStart(2, '0');
+    let minutes = date.getMinutes().toString().padStart(2, '0');
+    let secondes = date.getSeconds().toString().padStart(2, '0');
+
+    return `${jour}/${mois}/${annee} ${heures}:${minutes}:${secondes}`;
+  }
 }

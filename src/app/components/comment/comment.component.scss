@@ -1,13 +1,17 @@
 .container-comment {
-  position: relative;
-  border: 1px solid grey;
+  //   position: relative;
+  //   border: 1px solid grey;
+  background-color: rgb(60, 60, 60);
   border-radius: 5px;
   padding: 5px;
+  margin-bottom: 5px;
 }
 .remove-comment-button {
-  position: absolute;
-  top: 10px;
-  right: 10px;
   cursor: pointer;
   color: grey;
+}
+.container-user-date {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
