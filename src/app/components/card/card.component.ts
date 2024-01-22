@@ -24,7 +24,7 @@ export class CardComponent implements OnInit {
   cards!: Card[]; // Stockage des détails des cartes
   comments!: Comment[]; // Tableau pour stocker les commentaires
   comment!: Comment; // stockage d'un commentaire
-  commentText: string = 'ajoutez un commentaire';
+  commentText!: string;
   @Output() rmCard = new EventEmitter<any>();
 
   ngOnInit() {
@@ -46,7 +46,7 @@ export class CardComponent implements OnInit {
       })
       .subscribe((comment: any) => {
         this.comments.push(comment);
-        this.commentText = 'ajoutez un commentaire';
+        this.commentText = '';
       });
   }
   updateCard() {
