@@ -1,6 +1,5 @@
 .card {
   background-color: grey;
-  margin-top: 5px;
   padding: 5px;
 }
 .input-card,
@@ -20,7 +19,7 @@
 .input-comment {
   width: 100%;
   box-sizing: border-box;
-  background-color: white;
+  background-color: #cccccc;
   padding: 8px;
   border-radius: 5px;
   margin-top: 10px;
@@ -38,4 +37,5 @@
   top: 10px;
   right: 10px;
   cursor: pointer;
+  color: #adb8c4;
 }
