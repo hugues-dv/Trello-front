@@ -215,12 +215,11 @@ button {
 
 app-list {
   flex-direction: column;
-  // background-color: rgb(201, 194, 194);
   background-color: black;
   flex: 1;
   padding: 5px;
   border-radius: 15px;
-  box-shadow: 8px 5px 5px rgb(20, 20, 20);
+  box-shadow: 10px 10px 10px rgb(17, 17, 17);
 }
 
 app-list:not(:last-child) {
