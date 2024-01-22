@@ -58,10 +58,22 @@ button.project {
 .add-project {
   display: flex;
   justify-content: left;
-  align-items: center; /* Pour aligner les boutons verticalement */
+  align-items: center;
   width: 100%;
-  height: 40px;
+}
+
+.add-project {
+  flex-direction: column;
+}
+
+.projectLabel {
+  margin-bottom: 1px;
+}
+
+.buttonContainer {
+  display: flex;
   flex-direction: row;
+  height: 40px;
 }
 
 .buttonDelete {
@@ -110,9 +122,14 @@ button.project {
 .add-project input,
 .add-project button {
   display: flex;
-  height: 100%;
-  width: 50%;
+  box-sizing: border-box;
+  height: 40px;
+  width: 100%;
   border: none;
+}
+
+.title {
+  margin-top: 20px;
 }
 
 .add-project button {
@@ -123,6 +140,7 @@ button.project {
   text-align: center;
   font-size: 0.7em;
 }
+
 .add-project button:disabled {
   opacity: 0.5;
   cursor: default;
