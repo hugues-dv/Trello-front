@@ -1,22 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="list.component.scss">
-  <title>Four Lists Example</title>
-</head>
-<body>
-  
-  <div class="list-container">
-    <div class="list-item">Tache 1</div>
+<input
+  type="text"
+  class="input-list-name"
+  [(ngModel)]="list.name"
+  (keyup.enter)="this.updateList()"
+  (focusout)="getListById()"
+/>
+<div class="list-header">
+  <div title="Remove list" class="remove-list-button" (click)="removeList()">
+    Remove list <i class="fa fa-minus-square-o" aria-hidden="true"></i>
   </div>
-
-  <div class="list-container">
-    <div class="list-title">En Cours</div>  
-    <div class="list-item">Tache 2</div>
-    <div class="list-item">Tache 3</div>
-    <div class="list-item">Tache 4</div>
+  <div class="add-card-button" (click)="addCard()">
+    Add card <i class="fa fa-plus-square-o" aria-hidden="true"></i>
   </div>
 </div>
 <div class="card" *ngFor="let card of cards">
