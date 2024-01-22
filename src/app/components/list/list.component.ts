@@ -45,7 +45,7 @@ export class ListComponent implements OnInit {
   addCard() {
     this.cardService
       .createCard({
-        title: 'titre',
+        title: 'title',
         description: 'description',
         createdAt: new Date(),
         idList: this.list.id,
