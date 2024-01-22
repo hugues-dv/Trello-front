@@ -46,6 +46,7 @@ export class CardComponent implements OnInit {
       })
       .subscribe((comment: any) => {
         this.comments.push(comment);
+        this.commentText = 'ajoutez un commentaire';
       });
   }
   updateCard() {
@@ -63,13 +64,11 @@ export class CardComponent implements OnInit {
     // sans recharger la page.
     this.rmCard.emit(this.card);
   }
-  // deleteCard(card: Card) {
-  //   if (this.card.id) {
-  //     this.cardService.deleteCard(card.id).subscribe(() => {
-  //       this.cards = this.cards.filter(
-  //         (actualCard) => actualCard.id !== card.id
-  //       );
-  //     });
-  //   }
-  // }
+  deleteComment(comment: Comment) {
+    this.commentService.deleteComment(comment.id).subscribe(() => {
+      this.comments = this.comments.filter(
+        (actualComment) => actualComment.id !== comment.id
+      );
+    });
+  }
 }

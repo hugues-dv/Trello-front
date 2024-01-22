@@ -1,29 +1,30 @@
 <div title="Remove card" class="remove-card-button" (click)="removeCard()">
   <i class="fa fa-trash" aria-hidden="true"></i>
 </div>
-<input
-  type="text"
-  class="input-card card-title"
-  [(ngModel)]="card.title"
-  (keyup.enter)="this.updateCard()"
-  (focusout)="getCardById()"
-/>
-<input
-  type="text"
-  class="input-card card-description"
-  [(ngModel)]="card.description"
-  (keyup.enter)="this.updateCard()"
-  (focusout)="getCardById()"
-/>
-<br />
+<div class="container-card">
+  <input
+    type="text"
+    class="input-card card-title"
+    [(ngModel)]="card.title"
+    (keyup.enter)="this.updateCard()"
+    (focusout)="getCardById()"
+  />
+  <input
+    type="text"
+    class="input-card card-description"
+    [(ngModel)]="card.description"
+    (keyup.enter)="this.updateCard()"
+    (focusout)="getCardById()"
+  />
+</div>
+
+<div class="comment" *ngFor="let comment of comments">
+  <app-comment [comment]="comment" (rmComment)="deleteComment($event)">
+  </app-comment>
+</div>
 <input
   type="text"
   class="input-comment comment-add"
-  placeholder="ajoutez un commentaire"
   [(ngModel)]="this.commentText"
   (keyup.enter)="this.addComment()"
 />
-
-<div class="comment" *ngFor="let comment of comments">
-  <app-comment [comment]="comment"> </app-comment>
-</div>

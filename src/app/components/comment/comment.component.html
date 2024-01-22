@@ -1,3 +1,12 @@
-<p>user :{{ comment.user }}</p>
-<p>date : {{ comment.createdAt }}</p>
-<p>content : {{ comment.content }}</p>
+<div class="container-comment">
+  <p>user :{{ comment.user }}</p>
+  <p>date : {{ comment.createdAt }}</p>
+  <p>content : {{ comment.content }}</p>
+  <div
+    title="Remove comment"
+    class="remove-comment-button"
+    (click)="removeComment()"
+  >
+    <i class="fa fa-trash" aria-hidden="true"></i>
+  </div>
+</div>
