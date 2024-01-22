@@ -47,4 +47,13 @@ export class CardComponent implements OnInit {
         this.comments.push(comment);
       });
   }
+  updateCard() {
+    this.cardService.updateCard(this.card).subscribe(() => {});
+  }
+
+  getCardById() {
+    this.cardService.getCardById(this.card.id).subscribe((card: Card) => {
+      this.card = card;
+    });
+  }
 }

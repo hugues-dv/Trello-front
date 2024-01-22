@@ -1,6 +1,20 @@
-<p>{{ card.title }}</p>
-<p>{{ card.description }}</p>
-<p>{{ card.id }}</p>
+<input
+  type="text"
+  class="input-card card-title"
+  [(ngModel)]="card.title"
+  (keyup.enter)="this.updateCard()"
+  (focusout)="getCardById()"
+/>
+<input
+  type="text"
+  class="input-card card-description"
+  [(ngModel)]="card.description"
+  (keyup.enter)="this.updateCard()"
+  (focusout)="getCardById()"
+/>
+<!-- <p>{{ card.title }}</p>
+<p>{{ card.description }}</p> -->
+<!-- <p>{{ card.id }}</p> -->
 <form (ngSubmit)="addComment()">
   <label for="commentText">Ajouter un commentaire :</label>
   <textarea
