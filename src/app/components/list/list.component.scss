@@ -1,9 +1,13 @@
-body {
-      font-family: Arial, sans-serif;
-      display: flex;
-      justify-content: space-around;
-      padding: 20px;
-    }
+.list-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
+  flex: 1 1 auto;
+}
 
     .list-container {
       border: 2px solid #fcf8f8;
@@ -14,12 +18,55 @@ body {
       overflow-y: auto;
       margin-right: 20px;
     }
+.input-list-name {
+  max-width: 100px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  font-size: 16px;
+  font-family: Arial, sans-serif;
+  color: #777;
+  padding: 5px;
+}
 
-    .list-title {
-      font-size: 18px;
-      font-weight: bold;
-      margin-bottom: 10px;
-    }
+.input-list-name:focus {
+  border: none;
+  outline: none;
+}
+
+.add-card-button,
+.remove-list-button {
+  display: flex;
+  font-weight: bold;
+  color: grey;
+  align-items: center;
+  font-size: 14px;
+}
+
+.remove-list-button {
+  justify-content: start;
+}
+
+.remove-list-button i,
+.add-card-button i {
+  font-size: 20px;
+  padding-left: 5px;
+  cursor: pointer;
+}
+
+.remove-list-button i:hover,
+.add-card-button i:hover {
+  opacity: 0.8;
+  background-color: rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+}
+
+.remove-list-button i:active,
+.add-card-button i:active {
+  opacity: 0.6;
+  background-color: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+}
 
     .list-item {
       background-color: #f7f3f3;

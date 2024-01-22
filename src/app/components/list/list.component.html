@@ -9,7 +9,6 @@
 <body>
   
   <div class="list-container">
-    <div class="list-title">A Faire</div>
     <div class="list-item">Tache 1</div>
   </div>
 
@@ -19,17 +18,7 @@
     <div class="list-item">Tache 3</div>
     <div class="list-item">Tache 4</div>
   </div>
-
-  <div class="list-container">
-    <div class="list-title">Terminé</div>
-
-  </div>
-
-  <div class="list-container">
-    <div class="list-title">Stand-by</div>
-
-  </div>
-
-</body>
-</html>
-
+</div>
+<div class="card" *ngFor="let card of cards">
+  <app-card [card]="card"></app-card>
+</div>

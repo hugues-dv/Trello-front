@@ -17,8 +17,6 @@ export class ProjectsComponent implements OnInit {
   actualProject!: Project;
   lists!: List[];
   projectsDatas!: Object;
-  @Input()
-  listName!: string;
   projectLabel!: string;
   projectDescription!: string;
 
@@ -52,7 +50,6 @@ export class ProjectsComponent implements OnInit {
       })
       .subscribe((list: any) => {
         this.lists.push(list);
-        this.listName = '';
       });
   }
 
@@ -61,11 +58,8 @@ export class ProjectsComponent implements OnInit {
       this.projectLabel.trim() !== '' &&
       this.projectDescription.trim() !== ''
     ) {
-      let lastProjectId = this.getLastProjectId();
-      let newProjectId = lastProjectId ? lastProjectId + 1 : 1;
       this.projectsService
         .createProject({
-          id: newProjectId,
           name: this.projectLabel,
           description: this.projectDescription,
           createdAt: new Date(),
@@ -79,27 +73,17 @@ export class ProjectsComponent implements OnInit {
     }
   }
 
-  deleteProject(projectId: number) {
+  deleteProject(projectId?: number) {
     this.projectsService.deleteProject(projectId).subscribe(() => {
       this.projects = this.projects.filter(
         (project) => project.id != Number(projectId)
       );
-      if (this.actualProject && this.actualProject.id == Number(projectId)) {
-        // this.actualProject = {
-        //   id: this.projects[0].id,
-        //   name: this.projects[0].name,
-        //   description: this.projects[0].description,
-        //   createdAt: this.projects[0].createdAt,
-        // };
-      }
     });
   }
 
-  getLastProjectId(): number | undefined {
-    if (this.projects.length > 0) {
-      const lastProject = this.projects[this.projects.length - 1]; // Récupère le dernier projet
-      return Number(lastProject.id); // Renvoie l'ID du dernier projet
-    }
-    return undefined; // S'il n'y a pas de projet, renvoie undefined
+  deleteList(list: List) {
+    this.listsService.deleteList(list.id).subscribe(() => {
+      this.lists = this.lists.filter((actualList) => actualList.id !== list.id);
+    });
   }
 }

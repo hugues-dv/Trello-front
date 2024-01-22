@@ -150,9 +150,17 @@ button {
   color: white;
 }
 
-.listsContainer {
+.board {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
   background-color: white;
   color: grey;
+  padding: 30px;
+  padding: 10px;
+}
+
+.listsContainer {
   padding: 10px;
 }
 

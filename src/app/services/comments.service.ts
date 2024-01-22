@@ -4,10 +4,10 @@ import { ConfigService } from './config.service';
 import { Observable } from 'rxjs';
 
 export interface Comment {
-  id: number;
+  id?: number;
   content: string;
   createdAt: Date;
-  idCard: number;
+  idCard?: number;
   user: string;
 }
 
@@ -25,12 +25,12 @@ export class CommentService {
     return this.http.get<Comment[]>(`${this.apiUrl}/comment`);
   }
 
-  getCommentById(id: number): Observable<Comment> {
+  getCommentById(id?: number): Observable<Comment> {
     return this.http.get<Comment>(`${this.apiUrl}/comment/${id}`);
   }
 
-  getCommentByCardId(cardId: number): Observable<Comment> {
-    return this.http.get<Comment>(`${this.apiUrl}/comment?cardId=${cardId}`);
+  getCommentByCardId(cardId?: number): Observable<Comment[]> {
+    return this.http.get<Comment[]>(`${this.apiUrl}/comment?idCard=${cardId}`);
   }
 
   createComment(comment: Comment) {

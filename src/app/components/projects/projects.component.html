@@ -43,7 +43,12 @@
       Description: {{ actualProject.description }}
     </div>
     <div class="listsContainer">
-      <app-list class="list" *ngFor="let list of lists"></app-list>
+      <app-list
+        class="list"
+        *ngFor="let list of lists"
+        [list]="list"
+        (rmList)="deleteList($event)"
+      ></app-list>
     </div>
   </div>
 </div>

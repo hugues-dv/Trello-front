@@ -4,7 +4,7 @@ import { ConfigService } from './config.service';
 import { Observable } from 'rxjs';
 
 export interface Project {
-  id: number;
+  id?: number;
   name: string;
   description: string;
   createdAt: Date;
@@ -36,7 +36,7 @@ export class ProjectService {
     return this.http.put(`${this.apiUrl}/project/${project.id}`, project);
   }
 
-  deleteProject(id: number) {
+  deleteProject(id?: number) {
     return this.http.delete(`${this.apiUrl}/project/${id}`);
   }
 }
