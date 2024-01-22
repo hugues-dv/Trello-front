@@ -12,11 +12,7 @@
   (keyup.enter)="this.updateCard()"
   (focusout)="getCardById()"
 />
-<!-- <p>{{ card.title }}</p>
-<p>{{ card.description }}</p> -->
-<!-- <p>{{ card.id }}</p> -->
 <br />
-<p></p>
 <input
   type="text"
   class="input-comment comment-add"
@@ -25,16 +21,6 @@
   (keyup.enter)="this.addComment()"
 />
 
-<!-- <form (ngSubmit)="addComment()">
-  <label for="commentText">Ajouter un commentaire :</label>
-  <textarea
-    id="commentText"
-    [(ngModel)]="commentText"
-    name="commentText"
-    required
-  ></textarea>
-  <button type="submit">Ajouter</button>
-</form> -->
 <div class="comment" *ngFor="let comment of comments">
   <app-comment [comment]="comment"> </app-comment>
 </div>
