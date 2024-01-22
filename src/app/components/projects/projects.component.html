@@ -38,12 +38,13 @@
     </div>
   </div>
   <div class="board">
-    <div class="header">
+    <nav class="header">
       <h2>Board</h2>
+      <p>Sign in</p>
       <div class="add-list-button" (click)="addList()">
         Add list <i class="fa fa-plus-square-o" aria-hidden="true"></i>
       </div>
-    </div>
+    </nav>
     <div class="description" *ngIf="projects">
       Description: {{ actualProject.description }}
     </div>

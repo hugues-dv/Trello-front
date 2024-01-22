@@ -14,5 +14,5 @@
   </div>
 </div>
 <div class="card" *ngFor="let card of cards">
-  <app-card [card]="card"></app-card>
+  <app-card [card]="card" (rmCard)="deleteCard($event)"></app-card>
 </div>
