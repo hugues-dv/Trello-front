@@ -9,23 +9,22 @@
   flex: 1 1 auto;
 }
 
-    .list-container {
-      border: 2px solid #fcf8f8;
-      border-radius: 5px;
-      padding: 10px;
-      width: 200px;
-      height: 300px;
-      overflow-y: auto;
-      margin-right: 20px;
-    }
+.list-container {
+  border: 2px solid #fcf8f8;
+  border-radius: 5px;
+  padding: 10px;
+  width: 200px;
+  height: 300px;
+  overflow-y: auto;
+  margin-right: 20px;
+}
 .input-list-name {
-  // max-width: 100px;
   border: none;
   outline: none;
   background-color: transparent;
   font-size: 16px;
   font-family: Arial, sans-serif;
-  color: #777;
+  color: #adadad;
   padding: 5px;
 }
 
@@ -38,7 +37,7 @@
 .remove-list-button {
   display: flex;
   font-weight: bold;
-  color: grey;
+  color: #adadad;
   align-items: center;
   font-size: 14px;
 }
@@ -68,15 +67,15 @@
   cursor: pointer;
 }
 
-    .list-item {
-      background-color: #f7f3f3;
-      padding: 8px;
-      margin-bottom: 5px;
-      border-radius: 5px;
-    }
+.list-item {
+  background-color: #f7f3f3;
+  padding: 8px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+}
 .card {
   height: 200px;
-  background-color: rgb(146, 145, 145);
+  background-color: #202529;
   margin-bottom: 5px;
 }
 
