@@ -60,4 +60,9 @@ export class ListComponent implements OnInit {
     // sans recharger la page.
     this.rmList.emit(this.list);
   }
+  deleteCard(card: Card) {
+    this.cardService.deleteCard(card.id).subscribe(() => {
+      this.cards = this.cards.filter((actualCard) => actualCard.id !== card.id);
+    });
+  }
 }
