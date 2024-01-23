@@ -71,4 +71,11 @@ export class CardComponent implements OnInit {
       );
     });
   }
+  onEnterPress(event: KeyboardEvent) {
+    // Empêcher l'ajout d'une nouvelle ligne
+    event.preventDefault();
+
+    // Appeler votre logique
+    this.updateCard();
+  }
 }
