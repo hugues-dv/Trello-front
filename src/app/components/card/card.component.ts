@@ -4,6 +4,7 @@ import { Comment, CommentService } from '../../services/comments.service';
 import { Card, CardService } from '../../services/cards.service';
 import { CommentComponent } from '../comment/comment.component';
 import { FormsModule } from '@angular/forms';
+import { User } from '../../services/users.service';
 
 @Component({
   selector: 'app-card',
@@ -25,6 +26,8 @@ export class CardComponent implements OnInit {
   comments!: Comment[]; // Tableau pour stocker les commentaires
   comment!: Comment; // stockage d'un commentaire
   commentText!: string;
+  user!: User;
+  username!: string;
   @Output() rmCard = new EventEmitter<any>();
 
   ngOnInit() {
@@ -42,7 +45,7 @@ export class CardComponent implements OnInit {
         content: this.commentText,
         createdAt: new Date(),
         idCard: this.card.id,
-        // idUser: this.user.id,
+        username: this.user.username,
       })
       .subscribe((comment: any) => {
         this.comments.push(comment);

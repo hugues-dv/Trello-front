@@ -4,7 +4,6 @@ import { ConfigService } from './config.service';
 import { Observable } from 'rxjs';
 
 export interface User {
-  id?: number;
   username?: string;
   password?: string;
 }
@@ -23,8 +22,8 @@ export class UserService {
     return this.http.get<User[]>(`${this.apiUrl}/user`);
   }
 
-  getUserById(id?: number): Observable<User> {
-    return this.http.get<User>(`${this.apiUrl}/user/${id}`);
+  getUser(username?: string): Observable<User> {
+    return this.http.get<User>(`${this.apiUrl}/user/${username}`);
   }
 
   createUser(user: User) {
@@ -32,10 +31,10 @@ export class UserService {
   }
 
   updateUser(user: User) {
-    return this.http.put(`${this.apiUrl}/user/${user.id}`, user);
+    return this.http.put(`${this.apiUrl}/user/${user.username}`, user);
   }
 
-  deleteUser(id: number) {
-    return this.http.delete(`${this.apiUrl}/user/${id}`);
+  deleteUser(username: string) {
+    return this.http.delete(`${this.apiUrl}/user/${username}`);
   }
 }
