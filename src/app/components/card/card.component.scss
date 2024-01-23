@@ -16,6 +16,9 @@
   overflow: hidden;
   width: 100%;
   box-sizing: border-box;
+  white-space: normal;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .card-description:focus {
