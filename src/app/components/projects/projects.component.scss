@@ -213,6 +213,7 @@ button {
   display: flex;
   flex-direction: row;
   color: white;
+
 }
 
 app-list {
@@ -222,6 +223,7 @@ app-list {
   padding: 5px;
   border-radius: 15px;
   box-shadow: 10px 10px 10px rgb(17, 17, 17);
+  overflow-y: auto;
 }
 
 app-list:not(:last-child) {
