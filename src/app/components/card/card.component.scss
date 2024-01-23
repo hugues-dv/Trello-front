@@ -12,9 +12,14 @@
   color: #adb8c4;
   padding: 5px;
 }
+.card-description {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
 .addCommentContainer {
   display: flex;
   justify-content: center;
+  padding: 10px;
 }
 .input-comment {
   width: 100%;
