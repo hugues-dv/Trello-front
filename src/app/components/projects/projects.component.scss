@@ -58,10 +58,22 @@ button.project {
 .add-project {
   display: flex;
   justify-content: left;
-  align-items: center; /* Pour aligner les boutons verticalement */
+  align-items: center;
   width: 100%;
-  height: 40px;
+}
+
+.add-project {
+  flex-direction: column;
+}
+
+.projectLabel {
+  margin-bottom: 1px;
+}
+
+.buttonContainer {
+  display: flex;
   flex-direction: row;
+  height: 40px;
 }
 
 .buttonDelete {
@@ -90,7 +102,7 @@ button.project {
   cursor: pointer;
 }
 
-.add-list-button i:hover,
+.add-list-button:hover,
 .buttonDelete:hover,
 .project:hover,
 .add-project button:not(:disabled):hover {
@@ -99,6 +111,7 @@ button.project {
   cursor: pointer;
 }
 
+.add-list-button:active,
 .buttonDelete:active,
 .project:active,
 .add-project button:not(:disabled):active {
@@ -110,9 +123,14 @@ button.project {
 .add-project input,
 .add-project button {
   display: flex;
-  height: 100%;
-  width: 50%;
+  box-sizing: border-box;
+  height: 40px;
+  width: 100%;
   border: none;
+}
+
+.title {
+  margin-top: 20px;
 }
 
 .add-project button {
@@ -123,13 +141,14 @@ button.project {
   text-align: center;
   font-size: 0.7em;
 }
+
 .add-project button:disabled {
   opacity: 0.5;
   cursor: default;
 }
 
 input::placeholder {
-  color: lightgrey;
+  color: #bbbbbb;
 }
 
 input {
@@ -154,10 +173,11 @@ button {
   display: flex;
   flex-direction: column;
   flex: 1 1 auto;
-  background-color: white;
-  color: grey;
+  background-color: #413847;
+  color: #e7e7e7;
   padding: 30px;
   padding: 10px;
+  font-family: Arial, Helvetica, serif ;
 }
 
 .listsContainer {
@@ -174,7 +194,7 @@ button {
 .add-list-button {
   display: flex;
   font-weight: bold;
-  color: grey;
+  color: #e7e7e7;
   justify-content: center;
   align-items: center;
 }
@@ -192,13 +212,16 @@ button {
 .listsContainer {
   display: flex;
   flex-direction: row;
+  color: white;
 }
 
 app-list {
   flex-direction: column;
-  background-color: rgb(201, 194, 194);
+  background-color: black;
   flex: 1;
   padding: 5px;
+  border-radius: 15px;
+  box-shadow: 10px 10px 10px rgb(17, 17, 17);
 }
 
 app-list:not(:last-child) {
@@ -206,7 +229,8 @@ app-list:not(:last-child) {
 }
 
 .description {
-  color: gray;
+  color: #e7e7e7;
   padding-left: 20px;
   padding-bottom: 20px;
+  font-family: "Lucida Console", "Courier New", monospace;
 }

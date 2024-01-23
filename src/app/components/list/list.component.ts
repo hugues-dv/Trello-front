@@ -21,6 +21,7 @@ export class ListComponent implements OnInit {
   ) {}
   @Input()
   list!: List;
+  card!: Card;
   @Output() rmList = new EventEmitter<any>();
 
   ngOnInit() {
@@ -44,7 +45,7 @@ export class ListComponent implements OnInit {
   addCard() {
     this.cardService
       .createCard({
-        title: 'titre',
+        title: 'title',
         description: 'description',
         createdAt: new Date(),
         idList: this.list.id,
@@ -59,5 +60,11 @@ export class ListComponent implements OnInit {
     // l'affichage des listes depuis ce composant. Je peux le supprimer en bdd mais pas mettre à jour l'affichage
     // sans recharger la page.
     this.rmList.emit(this.list);
+  }
+
+  deleteCard(card: Card) {
+    this.cardService.deleteCard(card.id).subscribe(() => {
+      this.cards = this.cards.filter((actualCard) => actualCard.id !== card.id);
+    });
   }
 }

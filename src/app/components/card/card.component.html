@@ -1,16 +1,33 @@
-<p>{{ card.title }}</p>
-<p>{{ card.description }}</p>
-<p>{{ card.id }}</p>
-<form (ngSubmit)="addComment()">
-  <label for="commentText">Ajouter un commentaire :</label>
+<div class="container-card">
+  <div title="Remove card" class="remove-card-button" (click)="removeCard()">
+    <i class="fa fa-trash" aria-hidden="true"></i>
+  </div>
+  <input
+    type="text"
+    class="input-card card-title"
+    [(ngModel)]="card.title"
+    (keyup.enter)="this.updateCard()"
+    (focusout)="getCardById()"
+  />
   <textarea
-    id="commentText"
-    [(ngModel)]="commentText"
-    name="commentText"
-    required
+    type="text"
+    class="input-card card-description"
+    [(ngModel)]="card.description"
+    (focusout)="this.updateCard()"
+    rows="2"
   ></textarea>
-  <button type="submit">Ajouter</button>
-</form>
+</div>
+
 <div class="comment" *ngFor="let comment of comments">
-  <app-comment [comment]="comment"> </app-comment>
+  <app-comment [comment]="comment" (rmComment)="deleteComment($event)">
+  </app-comment>
+</div>
+<div class="addCommentContainer">
+  <input
+    type="text"
+    placeholder="Add comment"
+    class="input-comment comment-add"
+    [(ngModel)]="this.commentText"
+    (keyup.enter)="this.addComment()"
+  />
 </div>

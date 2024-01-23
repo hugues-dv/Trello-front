@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, EventEmitter, OnInit, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Comment, CommentService } from '../../services/comments.service';
 import { Card, CardService } from '../../services/cards.service';
@@ -24,7 +24,8 @@ export class CardComponent implements OnInit {
   cards!: Card[]; // Stockage des détails des cartes
   comments!: Comment[]; // Tableau pour stocker les commentaires
   comment!: Comment; // stockage d'un commentaire
-  commentText: string = '';
+  commentText!: string;
+  @Output() rmCard = new EventEmitter<any>();
 
   ngOnInit() {
     if (this.card) {
@@ -45,6 +46,29 @@ export class CardComponent implements OnInit {
       })
       .subscribe((comment: any) => {
         this.comments.push(comment);
+        this.commentText = '';
       });
+  }
+  updateCard() {
+    this.cardService.updateCard(this.card).subscribe(() => {});
+  }
+
+  getCardById() {
+    this.cardService.getCardById(this.card.id).subscribe((card: Card) => {
+      this.card = card;
+    });
+  }
+  removeCard() {
+    // Envoie la card à supprimer au composant parent en déclenchant un event car impossible de mettre à jour
+    // l'affichage des cards depuis ce composant. Je peux le supprimer en bdd mais pas mettre à jour l'affichage
+    // sans recharger la page.
+    this.rmCard.emit(this.card);
+  }
+  deleteComment(comment: Comment) {
+    this.commentService.deleteComment(comment.id).subscribe(() => {
+      this.comments = this.comments.filter(
+        (actualComment) => actualComment.id !== comment.id
+      );
+    });
   }
 }

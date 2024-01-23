@@ -2,7 +2,7 @@
   <div class="side-barre">
     <div class="titles">
       <h1 class="site-title">Mini-<span>Trello</span></h1>
-      <h2 class="channel-title">PROJETS</h2>
+      <h2 class="channel-title">PROJECTS</h2>
     </div>
     <div class="channels" *ngFor="let project of projects">
       <div class="buttonContainer">
@@ -14,31 +14,36 @@
         </button>
       </div>
     </div>
+    <div class="title">
+      <h2 class="channel-title">ADD PROJECT</h2>
+    </div>
     <div class="add-project">
       <input
+        class="projectLabel"
         type="text"
         [(ngModel)]="this.projectLabel"
         maxlength="30"
-        placeholder="Nouveau Projet"
+        placeholder="New Project"
         autocomplete="off"
       />
       <input
+        class="projectDescription"
         type="text"
         [(ngModel)]="this.projectDescription"
-        maxlength="30"
-        placeholder="Description projet"
+        maxlength="255"
+        placeholder="Project description"
         autocomplete="off"
       />
-      <button (click)="sendProject()">Nouveau Project</button>
+      <button (click)="sendProject()">New Project</button>
     </div>
   </div>
   <div class="board">
-    <div class="header">
+    <nav class="header">
       <h2>Board</h2>
       <div class="add-list-button" (click)="addList()">
         Add list <i class="fa fa-plus-square-o" aria-hidden="true"></i>
       </div>
-    </div>
+    </nav>
     <div class="description" *ngIf="projects">
       Description: {{ actualProject.description }}
     </div>

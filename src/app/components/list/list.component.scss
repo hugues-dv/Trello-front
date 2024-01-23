@@ -9,14 +9,22 @@
   flex: 1 1 auto;
 }
 
+.list-container {
+  border: 2px solid #fcf8f8;
+  border-radius: 5px;
+  padding: 10px;
+  width: 200px;
+  height: 300px;
+  overflow-y: auto;
+  margin-right: 20px;
+}
 .input-list-name {
-  max-width: 100px;
   border: none;
   outline: none;
   background-color: transparent;
   font-size: 16px;
   font-family: Arial, sans-serif;
-  color: #777;
+  color: #adadad;
   padding: 5px;
 }
 
@@ -29,7 +37,7 @@
 .remove-list-button {
   display: flex;
   font-weight: bold;
-  color: grey;
+  color: #adadad;
   align-items: center;
   font-size: 14px;
 }
@@ -45,23 +53,35 @@
   cursor: pointer;
 }
 
-.remove-list-button i:hover,
-.add-card-button i:hover {
+.remove-list-button:hover,
+.add-card-button:hover {
   opacity: 0.8;
   background-color: rgba(255, 255, 255, 0.1);
   cursor: pointer;
 }
 
-.remove-list-button i:active,
-.add-card-button i:active {
+.remove-list-button:active,
+.add-card-button:active {
   opacity: 0.6;
   background-color: rgba(255, 255, 255, 0.2);
   cursor: pointer;
 }
 
+.list-item {
+  background-color: #f7f3f3;
+  padding: 8px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  white-space: normal;
+}
 .card {
-  height: 200px;
-  background-color: grey;
-  margin-top: 5px;
-  color: white;
+  background-color: #202529;
+  margin-bottom: 5px;
+  position: relative;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.card:not(:last-child) {
+  margin-bottom: 10px;
 }
