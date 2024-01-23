@@ -13,8 +13,10 @@
     type="text"
     class="input-card card-description"
     [(ngModel)]="card.description"
-    (keyup.enter)="this.updateCard()"
+    (ngModelChange)="card.description = $event"
+    (keyup.enter)="updateCard()"
     (focusout)="getCardById()"
+    (focus)="onTextAreaFocus()"
     (blur)="onTextAreaBlur()"
   ></textarea>
 </div>
