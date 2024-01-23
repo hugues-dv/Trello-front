@@ -14,6 +14,14 @@
 }
 .input-card.card-description {
   white-space: normal;
+.card-description {
+  overflow: hidden;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.card-description:focus {
+  grid-row: 5;
 }
 .addCommentContainer {
   display: flex;
