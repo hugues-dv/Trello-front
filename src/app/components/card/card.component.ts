@@ -25,7 +25,22 @@ export class CardComponent implements OnInit {
   comments!: Comment[]; // Tableau pour stocker les commentaires
   comment!: Comment; // stockage d'un commentaire
   commentText!: string;
+  isTextAreaFocused: boolean = false;
   @Output() rmCard = new EventEmitter<any>();
+  
+
+  onTextAreaFocus() {
+    this.isTextAreaFocused = true;
+  }
+  onTextAreaBlur() {
+    this.isTextAreaFocused = false;
+    this.adjustTextAreaHeight();
+  }
+    private adjustTextAreaHeight() {
+    const textarea = document.querySelector('.input-card.card-description') as HTMLTextAreaElement;
+    textarea.style.height = 'auto';
+    textarea.style.height = `${textarea.scrollHeight}px`;
+  }
 
   ngOnInit() {
     if (this.card) {

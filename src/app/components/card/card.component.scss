@@ -1,6 +1,8 @@
 .card {
   background-color: grey;
   padding: 5px;
+  border-radius: 5px; /* Ajout de la bordure arrondie pour la cohérence */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 .input-card,
 .input-comment {
@@ -21,12 +23,15 @@
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     scroll-behavior: smooth;
-    resize: none;
+    resize: vertical;
+    transition: max-height 0.3s ease;
+}
+.card-description:not(:focus) {
+  overflow-y: hidden;
 }
 
-
 .card-description:focus {
-  grid-row: 5;
+  max-height: 200px;
   box-shadow: 0 4px 8px rgba(0, 128, 0, 0.2);
   border-color: #4CAF50;
 }

@@ -15,6 +15,7 @@
     [(ngModel)]="card.description"
     (keyup.enter)="this.updateCard()"
     (focusout)="getCardById()"
+    (blur)="onTextAreaBlur()"
   ></textarea>
 </div>
 
