@@ -53,15 +53,15 @@
   cursor: pointer;
 }
 
-.remove-list-button i:hover,
-.add-card-button i:hover {
+.remove-list-button:hover,
+.add-card-button:hover {
   opacity: 0.8;
   background-color: rgba(255, 255, 255, 0.1);
   cursor: pointer;
 }
 
-.remove-list-button i:active,
-.add-card-button i:active {
+.remove-list-button:active,
+.add-card-button:active {
   opacity: 0.6;
   background-color: rgba(255, 255, 255, 0.2);
   cursor: pointer;

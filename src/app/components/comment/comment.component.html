@@ -1,12 +1,14 @@
 <div class="container-comment">
-  <p>user :{{ comment.user }}</p>
-  <p>date : {{ comment.createdAt }}</p>
-  <p>content : {{ comment.content }}</p>
-  <div
-    title="Remove comment"
-    class="remove-comment-button"
-    (click)="removeComment()"
-  >
-    <i class="fa fa-trash" aria-hidden="true"></i>
+  <div class="container-user-date">
+    <p>{{ comment.user }}</p>
+    <p>{{ formaterTimestamp() }}</p>
+    <div
+      title="Remove comment"
+      class="remove-comment-button"
+      (click)="removeComment()"
+    >
+      <i class="fa fa-trash" aria-hidden="true"></i>
+    </div>
   </div>
+  <p>{{ comment.content }}</p>
 </div>

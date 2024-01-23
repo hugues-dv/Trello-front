@@ -102,7 +102,7 @@ button.project {
   cursor: pointer;
 }
 
-.add-list-button i:hover,
+.add-list-button:hover,
 .buttonDelete:hover,
 .project:hover,
 .add-project button:not(:disabled):hover {
@@ -111,6 +111,7 @@ button.project {
   cursor: pointer;
 }
 
+.add-list-button:active,
 .buttonDelete:active,
 .project:active,
 .add-project button:not(:disabled):active {
