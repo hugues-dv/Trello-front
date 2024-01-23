@@ -9,13 +9,13 @@
     (keyup.enter)="this.updateCard()"
     (focusout)="getCardById()"
   />
-  <textarea
+  <input
     type="text"
     class="input-card card-description"
     [(ngModel)]="card.description"
-    (focusout)="this.updateCard()"
-    rows="2"
-  ></textarea>
+    (keyup.enter)="this.updateCard()"
+    (focusout)="getCardById()"
+  />
 </div>
 
 <div class="comment" *ngFor="let comment of comments">
