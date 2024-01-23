@@ -1,15 +1,8 @@
-<h1 class="login-title">Mini<span>-Trello</span></h1>
-<p>Entrer votre nom d'utilisateur :</p>
-<input
-  type="text"
-  [(ngModel)]="this.username"
-  maxlength="20"
-  (keyup.enter)="this.UserService.login(this.username)"
-/>
-<button
-  class="buttondisable"
-  (click)="this.UserService.login(this.username)"
-  [disabled]="!this.username"
->
-  Connexion
-</button>
+<div class="login-container">
+  <h1 class="login-title">Mini<span>-Trello</span></h1>
+  <p>Entrer votre nom d'utilisateur :</p>
+  <input type="text" [(ngModel)]="this.username" maxlength="20" />
+  <button class="buttondisable" (click)="signIn()" [disabled]="!this.username">
+    Connexion
+  </button>
+</div>
