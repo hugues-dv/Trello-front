@@ -2,7 +2,7 @@ import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Comment, CommentService } from '../../services/comments.service';
 import { FormsModule } from '@angular/forms';
-import { User } from '../../services/users.service';
+import { User } from '../../services/user.service';
 @Component({
   selector: 'app-comment',
   standalone: true,

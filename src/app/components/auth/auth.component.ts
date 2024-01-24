@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { User, UserService } from '../../services/users.service';
+import { User, UserService } from '../../services/user.service';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -29,11 +29,9 @@ export class AuthComponent {
   }
 
   signIn() {
-    this.userService
-      .login(this.user.username, this.user.password)
-      .subscribe((res) => {
-        localStorage.setItem('jwt', res.token);
-      });
+    this.userService.login(this.user).subscribe((res) => {
+      localStorage.setItem('jwt', res.token);
+    });
   }
 
   changeSignType() {

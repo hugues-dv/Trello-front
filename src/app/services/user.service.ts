@@ -18,12 +18,12 @@ export class UserService {
     this.apiUrl = configService.getApiUrl();
   }
 
-  login(username: string, password: string): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/login`, { username, password });
+  login(user: User): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/user/login`, user);
   }
 
   register(user: User): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/register`, user);
+    return this.http.post<any>(`${this.apiUrl}/user/register`, user);
   }
 
   getUsers(): Observable<User[]> {

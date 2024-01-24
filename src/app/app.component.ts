@@ -14,13 +14,15 @@ import { jwtDecode } from 'jwt-decode';
 })
 export class AppComponent {
   isLoggedIn(): boolean {
-    const token = localStorage.getItem('jwt');
-    if (!token) return false;
-
     try {
-      const decoded: any = jwtDecode(token);
-      const isTokenExpired = decoded.exp < Date.now() / 1000;
-      return !isTokenExpired;
+      if (typeof window !== 'undefined') {
+        const token = localStorage.getItem('jwt');
+        if (!token) return false;
+
+        const decoded: any = jwtDecode(token);
+        const isTokenExpired = decoded.exp < Date.now() / 1000;
+        return !isTokenExpired;
+      } else return false;
     } catch (error) {
       console.error('Erreur de décodage du JWT :', error);
       return false;

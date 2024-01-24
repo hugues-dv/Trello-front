@@ -4,7 +4,7 @@ import { Comment, CommentService } from '../../services/comments.service';
 import { Card, CardService } from '../../services/cards.service';
 import { CommentComponent } from '../comment/comment.component';
 import { FormsModule } from '@angular/forms';
-import { User } from '../../services/users.service';
+import { User } from '../../services/user.service';
 
 @Component({
   selector: 'app-card',
