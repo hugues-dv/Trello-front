@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { ProjectsComponent } from './components/projects/projects.component';
 import { AuthComponent } from './components/auth/auth.component';
+import { jwtDecode } from 'jwt-decode';
 
 @Component({
   selector: 'app-root',
@@ -12,6 +13,17 @@ import { AuthComponent } from './components/auth/auth.component';
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  title = 'trello-front';
-  user = null;
+  isLoggedIn(): boolean {
+    const token = localStorage.getItem('jwt');
+    if (!token) return false;
+
+    try {
+      const decoded: any = jwtDecode(token);
+      const isTokenExpired = decoded.exp < Date.now() / 1000;
+      return !isTokenExpired;
+    } catch (error) {
+      console.error('Erreur de décodage du JWT :', error);
+      return false;
+    }
+  }
 }

@@ -4,8 +4,8 @@ import { ConfigService } from './config.service';
 import { Observable } from 'rxjs';
 
 export interface User {
-  username?: string;
-  password?: string;
+  username: string;
+  password: string;
 }
 
 @Injectable({
@@ -16,6 +16,14 @@ export class UserService {
 
   constructor(private http: HttpClient, private configService: ConfigService) {
     this.apiUrl = configService.getApiUrl();
+  }
+
+  login(username: string, password: string): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/login`, { username, password });
+  }
+
+  register(user: User): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/register`, user);
   }
 
   getUsers(): Observable<User[]> {

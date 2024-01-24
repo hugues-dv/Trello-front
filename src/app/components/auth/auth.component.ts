@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { User } from '../../services/users.service';
+import { User, UserService } from '../../services/users.service';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -11,7 +11,32 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './auth.component.scss',
 })
 export class AuthComponent {
-  username!: string;
+  user: User = {
+    username: '',
+    password: '',
+  };
+  confirmPassword!: string;
+  toSignUp: boolean = true;
 
-  signIn() {}
+  constructor(public userService: UserService) {}
+
+  signUp() {
+    if (this.user.password === this.confirmPassword) {
+      this.userService.register(this.user).subscribe((res) => {
+        console.log('Sign up successfull');
+      });
+    }
+  }
+
+  signIn() {
+    this.userService
+      .login(this.user.username, this.user.password)
+      .subscribe((res) => {
+        localStorage.setItem('jwt', res.token);
+      });
+  }
+
+  changeSignType() {
+    this.toSignUp = !this.toSignUp;
+  }
 }

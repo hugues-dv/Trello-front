@@ -12,7 +12,7 @@
 .login-container {
   display: flex;
   flex-direction: column;
-  max-width: 300px;
+  width: 300px;
   margin: auto;
   padding: 20px;
   border: 1px solid #ccc;
@@ -27,7 +27,7 @@
   color: grey;
 }
 
-.login-container input[type="text"] {
+.login-container input {
   width: 100%;
   padding: 8px;
   margin-bottom: 15px;
@@ -54,4 +54,16 @@
 .buttondisable:disabled {
   opacity: 0.5;
   cursor: default;
+}
+
+.authType {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 12px;
+  color: red;
+  font-weight: bold;
+}
+
+.authType:hover {
+  cursor: pointer;
 }
