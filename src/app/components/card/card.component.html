@@ -16,7 +16,7 @@
     [(ngModel)]="card.description"
     (ngModelChange)="card.description = $event"
     (focusout)="updateCard()"
-    (focus)="onTextAreaFocus()"
+    (click)="onTextAreaClick()"
     (blur)="onTextAreaBlur()"
   ></textarea>
 </div>

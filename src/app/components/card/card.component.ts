@@ -30,8 +30,9 @@ export class CardComponent implements OnInit {
   @Output() rmCard = new EventEmitter<any>();
   @ViewChild('cardDescription', { static: false }) cardDescription!: ElementRef;
 
-  onTextAreaFocus() {
+  onTextAreaClick() {
     this.isTextAreaFocused = true;
+    this.adjustTextAreaHeight();
   }
   onTextAreaBlur() {
     this.isTextAreaFocused = false;

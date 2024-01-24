@@ -22,6 +22,7 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   scroll-behavior: smooth;
   resize: vertical;
+  resize: none;
 }
 .container-card textarea:not(:focus) {
   overflow-y: hidden;
