@@ -10,12 +10,12 @@
     (focusout)="getCardById()"
   />
   <textarea
+    #cardDescription
     type="text"
     class="input-card card-description"
     [(ngModel)]="card.description"
     (ngModelChange)="card.description = $event"
-    (keyup.enter)="updateCard()"
-    (focusout)="getCardById()"
+    (focusout)="updateCard()"
     (focus)="onTextAreaFocus()"
     (blur)="onTextAreaBlur()"
   ></textarea>
