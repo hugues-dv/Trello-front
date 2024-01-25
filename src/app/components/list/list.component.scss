@@ -90,3 +90,17 @@
 .card:not(:last-child) {
   margin-bottom: 10px;
 }
+
+.button-show-more {
+  position: absolute;
+  bottom: 5px;
+  left: 10px;
+  background-color: transparent;
+  border: none;
+  color: #f7f3f3;
+  cursor: pointer;
+}
+
+.button-show-more:hover {
+  text-decoration: underline;
+}

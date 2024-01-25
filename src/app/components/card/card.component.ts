@@ -30,6 +30,8 @@ export class CardComponent implements OnInit {
   commentText!: string;
   username!: string;
   isTextAreaFocused: boolean = false;
+  showMore: boolean = false;
+
   @Output() rmCard = new EventEmitter<any>();
   @ViewChild('cardDescription', { static: false }) cardDescription!: ElementRef;
 
@@ -46,6 +48,9 @@ export class CardComponent implements OnInit {
     }
   }
 
+  toggleShowMore() {
+    this.showMore = !this.showMore;
+  }
   onTextAreaClick() {
     this.isTextAreaFocused = true;
     this.adjustTextAreaHeight();
@@ -57,17 +62,19 @@ export class CardComponent implements OnInit {
   }
 
   addComment() {
-    this.commentService
-      .createComment({
-        content: this.commentText,
-        createdAt: new Date(),
-        idCard: this.card.id,
-        username: this.username,
-      })
-      .subscribe((comment: any) => {
-        this.comments.push(comment);
-        this.commentText = '';
-      });
+    if (this.commentText.trim() !== '') {
+      this.commentService
+        .createComment({
+          content: this.commentText,
+          createdAt: new Date(),
+          idCard: this.card.id,
+          username: this.username,
+        })
+        .subscribe((comment: any) => {
+          this.comments.push(comment);
+          this.commentText = '';
+        });
+    }
   }
   updateCard() {
     this.cardService.updateCard(this.card).subscribe(() => {});
@@ -85,15 +92,11 @@ export class CardComponent implements OnInit {
     this.rmCard.emit(this.card);
   }
   deleteComment(comment: Comment) {
-    if (this.comment.username === this.username) {
-      this.commentService.deleteComment(comment.id).subscribe(() => {
-        this.comments = this.comments.filter(
-          (actualComment) => actualComment.id !== comment.id
-        );
-      });
-    } else {
-      // return un message d'erreur comme quoi pas le droit
-    }
+    this.commentService.deleteComment(comment.id).subscribe(() => {
+      this.comments = this.comments.filter(
+        (actualComment) => actualComment.id !== comment.id
+      );
+    });
   }
 
   private adjustTextAreaHeight() {

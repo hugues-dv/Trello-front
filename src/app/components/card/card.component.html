@@ -21,14 +21,29 @@
   ></textarea>
 </div>
 
-<div class="comment" *ngFor="let comment of comments">
-  <app-comment
-    [comment]="comment"
-    [username]="username"
-    (rmComment)="deleteComment($event)"
-  >
-  </app-comment>
+<div
+  class="comment"
+  *ngFor="
+    let comment of showMore ? comments : comments.slice(-3);
+    let i = index
+  "
+>
+  <ng-container *ngIf="showMore || i < 3">
+    <app-comment
+      [comment]="comment"
+      [username]="username"
+      (rmComment)="deleteComment($event)"
+    >
+    </app-comment>
+  </ng-container>
 </div>
+<button
+  class="button-show-more"
+  *ngIf="comments.length > 3"
+  (click)="toggleShowMore()"
+>
+  {{ showMore ? "Show Less" : "Show More" }}
+</button>
 <div class="addCommentContainer">
   <input
     type="text"

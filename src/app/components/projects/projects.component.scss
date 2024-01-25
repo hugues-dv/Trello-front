@@ -227,7 +227,9 @@ app-list {
   padding: 5px;
   border-radius: 15px;
   box-shadow: 10px 10px 10px rgb(17, 17, 17);
+  position: relative;
   overflow-y: auto;
+  padding-bottom: 20px;
 }
 
 app-list:not(:last-child) {
