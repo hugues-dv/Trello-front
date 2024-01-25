@@ -7,7 +7,7 @@
     <div class="channels" *ngFor="let project of projects">
       <div class="buttonContainer">
         <button class="buttonDelete" (click)="deleteProject(project.id)">
-          X
+          <i class="fa fa-trash" aria-hidden="true"></i>
         </button>
         <button class="project" (click)="selectProject(project)">
           {{ project.name }}
@@ -40,12 +40,15 @@
   <div class="board">
     <nav class="header">
       <h2>Board</h2>
+      <button class="button-log-out">Log out</button>
+    </nav>
+    <div class="container-nav">
+      <div class="description" *ngIf="projects">
+        Description: {{ actualProject.description }}
+      </div>
       <div class="add-list-button" (click)="addList()">
         Add list <i class="fa fa-plus-square-o" aria-hidden="true"></i>
       </div>
-    </nav>
-    <div class="description" *ngIf="projects">
-      Description: {{ actualProject.description }}
     </div>
     <div class="listsContainer">
       <app-list

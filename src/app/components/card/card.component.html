@@ -22,7 +22,11 @@
 </div>
 
 <div class="comment" *ngFor="let comment of comments">
-  <app-comment [comment]="comment" (rmComment)="deleteComment($event)">
+  <app-comment
+    [comment]="comment"
+    [username]="username"
+    (rmComment)="deleteComment($event)"
+  >
   </app-comment>
 </div>
 <div class="addCommentContainer">

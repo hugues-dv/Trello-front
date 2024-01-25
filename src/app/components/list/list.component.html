@@ -4,6 +4,7 @@
   [(ngModel)]="list.name"
   (keyup.enter)="this.updateList()"
   (focusout)="getListById()"
+  maxlength="50"
 />
 <div class="list-header">
   <div title="Remove list" class="remove-list-button">

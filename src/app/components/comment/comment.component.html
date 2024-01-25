@@ -1,14 +1,27 @@
-<div class="container-comment">
-  <div class="container-user-date">
-    <p>{{ comment.username }}</p>
-    <p>{{ formaterTimestamp() }}</p>
+<div *ngIf="comment.username === username; else otherUserContent">
+  <div class="container-position">
+    <div class="user-own-comment">
+      <div class="container-user-date">
+        <p>{{ formaterTimestamp() }}</p>
+        <p>{{ comment.username }}</p>
+      </div>
+      <p>{{ comment.content }}</p>
+    </div>
     <div
-      title="Remove comment"
       class="remove-comment-button"
+      title="Remove comment"
       (click)="removeComment()"
     >
       <i class="fa fa-trash" aria-hidden="true"></i>
     </div>
   </div>
-  <p>{{ comment.content }}</p>
 </div>
+<ng-template #otherUserContent>
+  <div class="container-comment">
+    <div class="container-user-date">
+      <p>{{ comment.username }}</p>
+      <p>{{ formaterTimestamp() }}</p>
+    </div>
+    <p>{{ comment.content }}</p>
+  </div>
+</ng-template>

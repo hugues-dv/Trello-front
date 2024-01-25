@@ -85,11 +85,15 @@ export class CardComponent implements OnInit {
     this.rmCard.emit(this.card);
   }
   deleteComment(comment: Comment) {
-    this.commentService.deleteComment(comment.id).subscribe(() => {
-      this.comments = this.comments.filter(
-        (actualComment) => actualComment.id !== comment.id
-      );
-    });
+    if (this.comment.username === this.username) {
+      this.commentService.deleteComment(comment.id).subscribe(() => {
+        this.comments = this.comments.filter(
+          (actualComment) => actualComment.id !== comment.id
+        );
+      });
+    } else {
+      // return un message d'erreur comme quoi pas le droit
+    }
   }
 
   private adjustTextAreaHeight() {
