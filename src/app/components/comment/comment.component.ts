@@ -1,18 +1,22 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Comment, CommentService } from '../../services/comments.service';
+import { Card, CardService } from '../../services/cards.service';
 import { FormsModule } from '@angular/forms';
 import { User } from '../../services/user.service';
+import { CardComponent } from '../card/card.component';
 @Component({
   selector: 'app-comment',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, CardComponent],
   templateUrl: './comment.component.html',
   styleUrl: './comment.component.scss',
 })
 export class CommentComponent implements OnInit {
   @Input()
   comment!: Comment;
+  @Input()
+  username!: string;
 
   @Output() rmComment = new EventEmitter<any>();
 

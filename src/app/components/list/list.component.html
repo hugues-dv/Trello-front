@@ -4,6 +4,7 @@
   [(ngModel)]="list.name"
   (keyup.enter)="this.updateList()"
   (focusout)="getListById()"
+  maxlength="50"
 />
 <div class="list-header">
   <div title="Remove list" class="remove-list-button">
@@ -19,6 +20,18 @@
     <i class="fa fa-plus-square-o" aria-hidden="true" (click)="addCard()"></i>
   </div>
 </div>
-<div class="card" *ngFor="let card of cards">
-  <app-card [card]="card" (rmCard)="deleteCard($event)"></app-card>
+<div
+  class="card"
+  *ngFor="let card of showMore ? cards : cards.slice(0, 3); let i = index"
+>
+  <ng-container *ngIf="showMore || i < 3">
+    <app-card [card]="card" (rmCard)="deleteCard($event)"></app-card>
+  </ng-container>
 </div>
+<button
+  class="button-show-more"
+  *ngIf="cards.length > 3"
+  (click)="toggleShowMore()"
+>
+  {{ showMore ? "Show Less" : "Show More" }}
+</button>
