@@ -16,7 +16,7 @@ export class AuthComponent {
     password: '',
   };
   confirmPassword!: string;
-  toSignUp: boolean = true;
+  toSignUp: boolean = false;
 
   constructor(public userService: UserService) {}
 
@@ -24,6 +24,7 @@ export class AuthComponent {
     if (this.user.password === this.confirmPassword) {
       this.userService.register(this.user).subscribe((res) => {
         console.log('Sign up successfull');
+        this.changeSignType();
       });
     }
   }
