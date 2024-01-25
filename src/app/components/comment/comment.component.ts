@@ -30,8 +30,8 @@ export class CommentComponent implements OnInit {
     let annee = date.getFullYear();
     let heures = date.getHours().toString().padStart(2, '0');
     let minutes = date.getMinutes().toString().padStart(2, '0');
-    let secondes = date.getSeconds().toString().padStart(2, '0');
+    // let secondes = date.getSeconds().toString().padStart(2, '0');
 
-    return `${jour}/${mois}/${annee} ${heures}:${minutes}:${secondes}`;
+    return `${jour}/${mois}/${annee} ${heures}:${minutes}`;
   }
 }

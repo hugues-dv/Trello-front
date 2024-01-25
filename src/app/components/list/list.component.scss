@@ -13,10 +13,13 @@
   border: 2px solid #fcf8f8;
   border-radius: 5px;
   padding: 10px;
-  width: 200px;
-  height: 300px;
+  // width: 200px;
+  // height: 300px;
   overflow-y: auto;
   margin-right: 20px;
+  // max-height: 100px;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 .input-list-name {
   border: none;

@@ -5,13 +5,14 @@ import { Card, CardService } from '../../services/cards.service';
 import { CommentComponent } from '../comment/comment.component';
 import { FormsModule } from '@angular/forms';
 import { User } from '../../services/user.service';
+import { ViewChild, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-card',
   standalone: true,
   imports: [CommonModule, CommentComponent, FormsModule],
   templateUrl: './card.component.html',
-  styleUrl: './card.component.scss',
+  styleUrls: ['./card.component.scss'],
 })
 export class CardComponent implements OnInit {
   constructor(
@@ -28,8 +29,23 @@ export class CardComponent implements OnInit {
   commentText!: string;
   user!: User;
   username!: string;
+  isTextAreaFocused: boolean = false;
   @Output() rmCard = new EventEmitter<any>();
+  @ViewChild('cardDescription', { static: false }) cardDescription!: ElementRef;
 
+  onTextAreaClick() {
+    this.isTextAreaFocused = true;
+    this.adjustTextAreaHeight();
+  }
+  onTextAreaBlur() {
+    this.isTextAreaFocused = false;
+    this.adjustTextAreaHeight();
+  }
+  private adjustTextAreaHeight() {
+    const textarea = this.cardDescription.nativeElement as HTMLTextAreaElement;
+    textarea.style.height = 'auto';
+    textarea.style.height = `${textarea.scrollHeight}px`;
+  }
   ngOnInit() {
     if (this.card) {
       this.commentService
