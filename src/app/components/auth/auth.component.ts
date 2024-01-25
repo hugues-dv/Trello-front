@@ -30,6 +30,7 @@ export class AuthComponent {
 
   signIn() {
     this.userService.login(this.user).subscribe((res) => {
+      localStorage.setItem('username', this.user.username);
       localStorage.setItem('jwt', res.token);
     });
   }

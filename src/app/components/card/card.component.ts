@@ -6,6 +6,7 @@ import { CommentComponent } from '../comment/comment.component';
 import { FormsModule } from '@angular/forms';
 import { User } from '../../services/user.service';
 import { ViewChild, ElementRef } from '@angular/core';
+import { getUsername } from '../../utils/local-storage';
 
 @Component({
   selector: 'app-card',
@@ -27,26 +28,15 @@ export class CardComponent implements OnInit {
   comments!: Comment[]; // Tableau pour stocker les commentaires
   comment!: Comment; // stockage d'un commentaire
   commentText!: string;
-  user!: User;
   username!: string;
   isTextAreaFocused: boolean = false;
   @Output() rmCard = new EventEmitter<any>();
   @ViewChild('cardDescription', { static: false }) cardDescription!: ElementRef;
 
-  onTextAreaClick() {
-    this.isTextAreaFocused = true;
-    this.adjustTextAreaHeight();
-  }
-  onTextAreaBlur() {
-    this.isTextAreaFocused = false;
-    this.adjustTextAreaHeight();
-  }
-  private adjustTextAreaHeight() {
-    const textarea = this.cardDescription.nativeElement as HTMLTextAreaElement;
-    textarea.style.height = 'auto';
-    textarea.style.height = `${textarea.scrollHeight}px`;
-  }
   ngOnInit() {
+    const storedUsername = getUsername(localStorage.getItem('jwt'));
+    this.username = storedUsername !== null ? storedUsername : '';
+
     if (this.card) {
       this.commentService
         .getCommentByCardId(this.card.id)
@@ -55,13 +45,24 @@ export class CardComponent implements OnInit {
         });
     }
   }
+
+  onTextAreaClick() {
+    this.isTextAreaFocused = true;
+    this.adjustTextAreaHeight();
+  }
+
+  onTextAreaBlur() {
+    this.isTextAreaFocused = false;
+    this.adjustTextAreaHeight();
+  }
+
   addComment() {
     this.commentService
       .createComment({
         content: this.commentText,
         createdAt: new Date(),
         idCard: this.card.id,
-        username: this.user.username,
+        username: this.username,
       })
       .subscribe((comment: any) => {
         this.comments.push(comment);
@@ -89,5 +90,11 @@ export class CardComponent implements OnInit {
         (actualComment) => actualComment.id !== comment.id
       );
     });
+  }
+
+  private adjustTextAreaHeight() {
+    const textarea = this.cardDescription.nativeElement as HTMLTextAreaElement;
+    textarea.style.height = 'auto';
+    textarea.style.height = `${textarea.scrollHeight}px`;
   }
 }
