@@ -22,6 +22,8 @@ export class ListComponent implements OnInit {
   @Input()
   list!: List;
   card!: Card;
+  showMore: boolean = false;
+
   @Output() rmList = new EventEmitter<any>();
 
   ngOnInit() {
@@ -30,6 +32,9 @@ export class ListComponent implements OnInit {
         this.cards = cards;
       });
     }
+  }
+  toggleShowMore() {
+    this.showMore = !this.showMore;
   }
 
   getListById() {

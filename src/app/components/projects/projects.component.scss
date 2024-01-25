@@ -177,7 +177,7 @@ button {
   color: #e7e7e7;
   padding: 30px;
   padding: 10px;
-  font-family: Arial, Helvetica, serif ;
+  font-family: Arial, Helvetica, serif;
 }
 
 .listsContainer {
@@ -189,6 +189,11 @@ button {
   flex-direction: row;
   justify-content: space-between;
   padding: 20px;
+}
+.container-nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .add-list-button {
@@ -213,7 +218,6 @@ button {
   display: flex;
   flex-direction: row;
   color: white;
-
 }
 
 app-list {
@@ -223,7 +227,9 @@ app-list {
   padding: 5px;
   border-radius: 15px;
   box-shadow: 10px 10px 10px rgb(17, 17, 17);
+  position: relative;
   overflow-y: auto;
+  padding-bottom: 20px;
 }
 
 app-list:not(:last-child) {
@@ -235,4 +241,10 @@ app-list:not(:last-child) {
   padding-left: 20px;
   padding-bottom: 20px;
   font-family: "Lucida Console", "Courier New", monospace;
+}
+
+.button-log-out {
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
 }

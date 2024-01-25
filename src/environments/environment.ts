@@ -1,5 +1,4 @@
 export const environment = {
-  production: false,
-  domain: 'http://localhost',
-  port: 5007,
+  domain_dev: 'http://localhost:5007',
+  domain_prod: 'https://minitrelloback.azurewebsites.net',
 };

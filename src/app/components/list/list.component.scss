@@ -29,6 +29,8 @@
   font-family: Arial, sans-serif;
   color: #adadad;
   padding: 5px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .input-list-name:focus {
@@ -87,4 +89,18 @@
 
 .card:not(:last-child) {
   margin-bottom: 10px;
+}
+
+.button-show-more {
+  position: absolute;
+  bottom: 5px;
+  left: 10px;
+  background-color: transparent;
+  border: none;
+  color: #f7f3f3;
+  cursor: pointer;
+}
+
+.button-show-more:hover {
+  text-decoration: underline;
 }

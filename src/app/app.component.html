@@ -1,1 +1,2 @@
-<app-projects></app-projects>
+<app-auth *ngIf="!isLoggedIn()"></app-auth>
+<app-projects *ngIf="isLoggedIn()"></app-projects>

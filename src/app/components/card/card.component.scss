@@ -78,3 +78,17 @@
 .comment {
   margin: 5px 0;
 }
+
+.button-show-more {
+  position: relative;
+  // bottom: 5px;
+  // left: 10px;
+  background-color: transparent;
+  border: none;
+  color: #f7f3f3;
+  cursor: pointer;
+}
+
+.button-show-more:hover {
+  text-decoration: underline;
+}

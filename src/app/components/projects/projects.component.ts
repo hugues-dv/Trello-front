@@ -23,8 +23,7 @@ export class ProjectsComponent implements OnInit {
   constructor(
     public projectsService: ProjectService,
     public listsService: ListService
-  ) {
-}
+  ) {}
 
   ngOnInit() {
     this.projectsService.getProjects().subscribe((projects: Project[]) => {

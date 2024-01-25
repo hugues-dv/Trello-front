@@ -1,0 +1,69 @@
+.login-title span {
+  color: #6a50a2;
+}
+
+.login-title {
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #8b6eb5;
+}
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+.login-container p {
+  margin-bottom: 10px;
+  font-size: 16px;
+  color: grey;
+}
+
+.login-container input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid grey;
+  border-radius: 10px;
+  box-sizing: border-box;
+  background-color: #e5e5e5;
+}
+
+.login-container button {
+  text-align: center;
+  width: 50%;
+  padding: 10px 0px;
+  margin: 0 auto;
+  border: none;
+  border-radius: 50vh;
+  background: linear-gradient(to right, #3280c3, #5a64ad, #95539a);
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.buttondisable:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.authType {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 12px;
+  color: red;
+  font-weight: bold;
+}
+
+.authType:hover {
+  cursor: pointer;
+}

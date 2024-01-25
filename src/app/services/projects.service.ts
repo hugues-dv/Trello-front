@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 export interface Project {
   id?: number;
   name: string;
-  description: string;
+  description?: string;
   createdAt: Date;
 }
 

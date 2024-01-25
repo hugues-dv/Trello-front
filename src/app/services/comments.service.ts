@@ -8,7 +8,7 @@ export interface Comment {
   content: string;
   createdAt: Date;
   idCard?: number;
-  user: string;
+  username?: string;
 }
 
 @Injectable({

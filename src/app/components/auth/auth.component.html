@@ -1,1 +1,32 @@
-<p>auth works!</p>
+<div class="login-container">
+  <h1 class="login-title">Mini<span>-Trello</span></h1>
+  <p>Username :</p>
+  <input type="text" [(ngModel)]="this.user.username" maxlength="20" />
+  <p>Password :</p>
+  <input type="password" [(ngModel)]="this.user.password" maxlength="30" />
+  <div *ngIf="this.toSignUp">
+    <p>Confirm password :</p>
+    <input type="password" [(ngModel)]="this.confirmPassword" maxlength="30" />
+  </div>
+  <button
+    class="buttondisable"
+    (click)="signIn()"
+    [disabled]="!this.user.username || !this.user.password"
+    *ngIf="!this.toSignUp"
+  >
+    Sign in
+  </button>
+  <button
+    class="buttondisable"
+    (click)="signUp()"
+    [disabled]="
+      !this.user.username || !this.user.password || !this.confirmPassword
+    "
+    *ngIf="this.toSignUp"
+  >
+    Sign up
+  </button>
+  <span class="authType" (click)="changeSignType()">{{
+    this.toSignUp ? "Sign in" : "Sign up"
+  }}</span>
+</div>
