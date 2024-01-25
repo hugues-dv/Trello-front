@@ -1,9 +1,20 @@
+<app-notification></app-notification>
 <div class="login-container">
   <h1 class="login-title">Mini<span>-Trello</span></h1>
   <p>Username :</p>
-  <input type="text" [(ngModel)]="this.user.username" maxlength="20" />
+  <input
+    type="text"
+    name="username"
+    [(ngModel)]="this.user.username"
+    maxlength="20"
+  />
   <p>Password :</p>
-  <input type="password" [(ngModel)]="this.user.password" maxlength="30" />
+  <input
+    type="password"
+    name="password"
+    [(ngModel)]="this.user.password"
+    maxlength="30"
+  />
   <div *ngIf="this.toSignUp">
     <p>Confirm password :</p>
     <input type="password" [(ngModel)]="this.confirmPassword" maxlength="30" />
