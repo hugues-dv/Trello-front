@@ -85,4 +85,8 @@ export class ProjectsComponent implements OnInit {
       this.lists = this.lists.filter((actualList) => actualList.id !== list.id);
     });
   }
+
+  logOut() {
+    localStorage.clear();
+  }
 }

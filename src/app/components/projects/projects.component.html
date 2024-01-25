@@ -40,7 +40,9 @@
   <div class="board">
     <nav class="header">
       <h2>Board</h2>
-      <button class="button-log-out">Log out</button>
+      <button class="button-log-out" (click)="logOut()">
+        <i class="fa fa-sign-out" aria-hidden="true"></i>
+      </button>
     </nav>
     <div class="container-nav">
       <div class="description" *ngIf="projects">
