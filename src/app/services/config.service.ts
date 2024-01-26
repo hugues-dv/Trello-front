@@ -8,6 +8,6 @@ export class ConfigService {
   constructor() {}
 
   getApiUrl(): string {
-    return `${environment.domain_dev}`;
+    return `${environment.domain_prod}`;
   }
 }
