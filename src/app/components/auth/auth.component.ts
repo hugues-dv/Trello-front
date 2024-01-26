@@ -30,7 +30,7 @@ export class AuthComponent {
       this.userService.register(this.user).subscribe({
         next: (res) => {
           this.changeSignType();
-          this.notificationService.showSuccess('Successfully registered!');
+          this.notificationService.showSuccess('Successfully registered !');
         },
         error: (err) => {
           this.notificationService.showError(err.message);
@@ -44,8 +44,14 @@ export class AuthComponent {
   }
 
   signIn() {
-    this.userService.login(this.user).subscribe((res) => {
-      localStorage.setItem('jwt', res.token);
+    this.userService.login(this.user).subscribe({
+      next: (res) => {
+        localStorage.setItem('jwt', res.token);
+      },
+      error: (err) => {
+        console.log('test');
+        this.notificationService.showError('Username or password incorrect !');
+      },
     });
   }
 
