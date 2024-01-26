@@ -2,6 +2,7 @@ import { Component, Input, EventEmitter, OnInit, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Comment, CommentService } from '../../services/comments.service';
 import { Card, CardService } from '../../services/cards.service';
+import { List, ListService } from '../../services/lists.service';
 import { CommentComponent } from '../comment/comment.component';
 import { FormsModule } from '@angular/forms';
 import { User } from '../../services/user.service';
@@ -18,7 +19,8 @@ import { getUsername } from '../../utils/local-storage';
 export class CardComponent implements OnInit {
   constructor(
     private cardService: CardService,
-    private commentService: CommentService
+    private commentService: CommentService,
+    private listService: ListService
   ) {}
   @Input()
   card!: Card; // Stockage des détails de la carte
@@ -28,6 +30,8 @@ export class CardComponent implements OnInit {
   comments!: Comment[]; // Tableau pour stocker les commentaires
   comment!: Comment; // stockage d'un commentaire
   commentText!: string;
+  list!: List;
+  lists!: List[];
   username!: string;
   isTextAreaFocused: boolean = false;
   showMore: boolean = false;
@@ -85,6 +89,7 @@ export class CardComponent implements OnInit {
       this.card = card;
     });
   }
+
   removeCard() {
     // Envoie la card à supprimer au composant parent en déclenchant un event car impossible de mettre à jour
     // l'affichage des cards depuis ce composant. Je peux le supprimer en bdd mais pas mettre à jour l'affichage
@@ -97,6 +102,18 @@ export class CardComponent implements OnInit {
         (actualComment) => actualComment.id !== comment.id
       );
     });
+  }
+  moveCardUp() {
+    const currentListId = this.listId;
+    const nextListId = currentListId + 1;
+    this.card.idList = nextListId;
+    this.updateCard();
+  }
+  moveCardDown() {
+    const currentListId = this.listId;
+    const nextListId = currentListId - 1;
+    this.card.idList = nextListId;
+    this.updateCard();
   }
 
   private adjustTextAreaHeight() {
