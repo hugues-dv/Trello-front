@@ -103,18 +103,8 @@ export class CardComponent implements OnInit {
       );
     });
   }
-  moveCardUp() {
-    const currentListId = this.listId;
-    const nextListId = currentListId + 1;
-    this.card.idList = nextListId;
-    this.updateCard();
-  }
-  moveCardDown() {
-    const currentListId = this.listId;
-    const nextListId = currentListId - 1;
-    this.card.idList = nextListId;
-    this.updateCard();
-  }
+  moveCardUp() {}
+  moveCardDown() {}
 
   private adjustTextAreaHeight() {
     const textarea = this.cardDescription.nativeElement as HTMLTextAreaElement;
