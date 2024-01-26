@@ -5,6 +5,7 @@ import { Card, CardService } from '../../services/cards.service';
 import { FormsModule } from '@angular/forms';
 import { User } from '../../services/user.service';
 import { CardComponent } from '../card/card.component';
+import { ViewChild, ElementRef } from '@angular/core';
 @Component({
   selector: 'app-comment',
   standalone: true,
@@ -13,12 +14,15 @@ import { CardComponent } from '../card/card.component';
   styleUrl: './comment.component.scss',
 })
 export class CommentComponent implements OnInit {
+  constructor(private commentService: CommentService) {}
+
   @Input()
   comment!: Comment;
   @Input()
   username!: string;
-
+  isTextAreaFocused: boolean = false;
   @Output() rmComment = new EventEmitter<any>();
+  @ViewChild('commentContent', { static: false }) commentContent!: ElementRef;
 
   ngOnInit() {}
   removeComment() {
@@ -37,5 +41,22 @@ export class CommentComponent implements OnInit {
     // let secondes = date.getSeconds().toString().padStart(2, '0');
 
     return `${jour}/${mois}/${annee} ${heures}:${minutes}`;
+  }
+  updateComment() {
+    this.commentService.updateComment(this.comment).subscribe(() => {});
+  }
+  onTextAreaClick() {
+    this.isTextAreaFocused = true;
+    this.adjustTextAreaHeight();
+  }
+
+  onTextAreaBlur() {
+    this.isTextAreaFocused = false;
+    this.adjustTextAreaHeight();
+  }
+  private adjustTextAreaHeight() {
+    const textarea = this.commentContent.nativeElement as HTMLTextAreaElement;
+    textarea.style.height = 'auto';
+    textarea.style.height = `${textarea.scrollHeight}px`;
   }
 }
